@@ -551,6 +551,29 @@ footer{
   transform:translate(-50%,0)
   }
   
+.more{
+  display:block;
+  width:calc(100% - 6px);
+  margin:22px 0 8px;
+  padding:16px;
+  border:0;
+  border-radius:0;
+  background:var(--violet);
+  color:#fff;
+  box-shadow:6px 6px 0 var(--red);
+  font:700 14px "Public Sans",system-ui,sans-serif;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  cursor:pointer;
+  -webkit-appearance:none;
+  appearance:none
+}
+
+.more:active{
+  transform:translate(2px,2px);
+  box-shadow:4px 4px 0 var(--red)
+}
+
 </style>
 </head>
 <body>
@@ -568,10 +591,13 @@ function art(n){const f=.022+(n*7%5)*.005,ph=n*1.7,am=16+(n%4)*5;let w="";for(le
 const SYN={retraite:["pension"],pension:["retraite"],smic:["salaire"],salaire:["smic","remuneration"],ecole:["education","enseignement","eleve"],logement:["loyer","hlm"],loyer:["logement"],impot:["fiscal","taxe","imposition"],taxe:["impot","fiscal"],sante:["hopital","soin","medecin"],hopital:["sante"],energie:["electricite","nucleaire","renouvelable"],travail:["emploi","salarie"],chomage:["emploi"],police:["securite"],immigration:["migrant","etranger"],otan:["defense"],ue:["europe","europeen"]};
 const $=s=>document.querySelector(s),app=$("#app"),qi=$("#q");
 const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const norm=s=>[...s].map(c=>(c.normalize("NFD").replace(/[\u0300-\u036f]/g,"")[0]||c).toLowerCase()).join("");
+const norm=s=>[...s].map(c=>{c=c.normalize("NFD").replace(/[\u0300-\u036f\u200b-\u200d\u00ad\ufeff]/g,"").toLowerCase();return c==="œ"?"oe":c==="æ"?"ae":c}).join("");
+const fold=w=>w.replace(/iques?$/,"ic");
+const words=s=>norm(s).split(/[^a-z0-9]+/).map(fold);
+const stem=w=>{w=fold(w);if(w.length>3)w=w.replace(/[sx]$/,"");const r=w.replace(/(ie|iste|isme)s?$/,"");if(r.length>=5&&r!==w)return r;return w.length>=7&&/ic$/.test(w)?w.slice(0,-2):w};
 let D,E=[],CH={};
-const tok=q=>norm(q).split(/[^a-z0-9]+/).filter(t=>t.length>1).map(t=>{let b=t.length>3?t.replace(/[sx]$/,""):t;return[b,...(SYN[b]||[])]});
-function hl(t,alts){const n=norm(t),r=[];n.replace(/[a-z0-9]+/g,(w,i)=>{if(alts.some(a=>w.startsWith(a)))r.push([i,i+w.length])});let o="",p=0;for(const[a,b]of r){o+=esc(t.slice(p,a))+"<mark>"+esc(t.slice(a,b))+"</mark>";p=b}return o+esc(t.slice(p))}
+const tok=q=>norm(q).split(/[^a-z0-9]+/).filter(t=>t.length>1).map(t=>{const b=t.length>3?t.replace(/[sx]$/,""):t;return[stem(t),...(SYN[b]||[]).map(fold)]});
+function hl(t,alts){const r=[];t.replace(/[\p{L}\p{M}\p{N}]+/gu,(w,i)=>{const n=fold(norm(w));if(alts.some(a=>n.startsWith(a)))r.push([i,i+w.length])});let o="",p=0;for(const[a,b]of r){o+=esc(t.slice(p,a))+"<mark>"+esc(t.slice(a,b))+"</mark>";p=b}return o+esc(t.slice(p))}
 function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove("on"),1600)}
 function cite(c,s){return`— ${D.meta.label}, ch. ${c.n} « ${c.title} », ${s.title}`}
 function mesure(m,c,s,alts){const h=x=>alts?hl(x,alts.flat()):esc(x);return`<li class="m${m.k?" k":""}">${m.k?'<span class="badge">★ Mesure phare</span><br>':""}${h(m.t)}${m.sub?`<ul>${m.sub.map(x=>`<li>${h(x)}</li>`).join("")}</ul>`:""}<button class="cp" data-c="${c.n}" data-s="${s.n}" data-t="${esc(m.t+(m.sub?"\n"+m.sub.map(x=>"– "+x).join("\n"):""))}" aria-label="Copier">⧉</button></li>`}
@@ -582,22 +608,25 @@ function foot(){const m=D.meta.missing.length;return`<footer><a href="https://la
 function chapter(n,sn){const c=D.parts.flatMap(p=>p.chapters).find(c=>c.n==n);if(!c)return home();
 app.innerHTML=`<a class="back mono" href="#/">← Tous les thèmes</a>${cover(c,1)}<div style="${vars(c.n)}">`+c.sections.map(s=>`<details class="sec" id="s${s.n}"${s.n==sn?" open":""}><summary><span class="sn">${pad(s.n)}</span><span>${esc(s.title)}</span><i class="cnt">${s.missing?"—":s.items.length}</i></summary><div class="body">${s.missing?`<div class="miss">Section pas encore importée (page absente de l'archive).<br><a class="src" href="${url(c.n,s.n)}" target="_blank" rel="noopener">Voir la source ↗</a></div>`:`${s.intro?`<p class="intro">${esc(s.intro)}</p>`:""}<ul class="ms">${s.items.map(m=>mesure(m,c,s)).join("")}</ul><a class="src" href="${url(c.n,s.n)}" target="_blank" rel="noopener">Source officielle ↗</a>`}</div></details>`).join("")+`</div>`+foot();
 if(sn){const el=$("#s"+sn);el&&setTimeout(()=>el.scrollIntoView({behavior:"smooth"}),50)}else scrollTo(0,0)}
-function search(q){const T=tok(q);if(!T.length)return route();const R=[];
+function search(q,all){const T=tok(q);if(!T.length)return route();const R=[];
 for(const e of E){let sc=0,ok=true;for(const alts of T){const own=alts.some(a=>e.w.some(w=>w.startsWith(a)));const ctx=alts.some(a=>e.cw.some(w=>w.startsWith(a)));if(!own&&!ctx){ok=false;break}sc+=own?2:1}if(ok)R.push({e,sc:sc+(e.m.k?.5:0)})}
 const G=new Map();for(const r of R){const k=r.e.c.n+"."+r.e.s.n;if(!G.has(k))G.set(k,{c:r.e.c,s:r.e.s,l:[],t:0});const g=G.get(k);g.l.push(r);g.t=Math.max(g.t,r.sc)}
 const gs=[...G.values()].sort((a,b)=>b.t-a.t||a.c.n-b.c.n||a.s.n-b.s.n);
 const n=R.length;if(!n){app.innerHTML=`<div class="none"><div style="font-size:42px">🤷</div><p>Aucune mesure pour « ${esc(q)} ».<br>Essaie un mot plus court ou un synonyme.</p></div>`;return}
-app.innerHTML=`<p class="rs">${n} résultat${n>1?"s":""} dans ${gs.length} section${gs.length>1?"s":""}</p>`+gs.slice(0,40).map(g=>`<section style="${vars(g.c.n)}"><div class="rg"><span class="chip d">${pad(g.c.n)}</span><div><a href="#/c/${g.c.n}/s${g.s.n}">${esc(g.s.title)}</a><small>Ch. ${g.c.n} · ${esc(g.c.title)}</small></div></div><ul class="ms">${g.l.sort((a,b)=>b.sc-a.sc).slice(0,12).map(r=>r.e.intro?`<li class="m"><em>${hl(r.e.m.t,T.flat())}</em></li>`:mesure(r.e.m,g.c,g.s,T)).join("")}</ul></section>`).join("");scrollTo(0,0)}
+let shown=0;const LG=all?gs.length:40,LI=all?1e9:12;
+const html=gs.slice(0,LG).map(g=>{const L=g.l.sort((a,b)=>b.sc-a.sc).slice(0,LI);shown+=L.length;return`<section style="${vars(g.c.n)}"><div class="rg"><span class="chip d">${pad(g.c.n)}</span><div><a href="#/c/${g.c.n}/s${g.s.n}">${esc(g.s.title)}</a><small>Ch. ${g.c.n} · ${esc(g.c.title)}</small></div></div><ul class="ms">${L.map(r=>r.e.intro?`<li class="m"><em>${hl(r.e.m.t,T.flat())}</em></li>`:mesure(r.e.m,g.c,g.s,T)).join("")}</ul></section>`}).join("");
+const hid=n-shown;app.innerHTML=`<p class="rs">${n} résultat${n>1?"s":""} dans ${gs.length} section${gs.length>1?"s":""}</p>`+html+(hid?`<button class="more" type="button">Afficher les ${hid} autre${hid>1?"s":""} résultat${hid>1?"s":""}</button>`:"");all||scrollTo(0,0)}
 function route(){const q=qi.value.trim();if(q.length>1)return search(q);const m=location.hash.match(/^#\/c\/(\d+)(?:\/s(\d+))?/);m?chapter(m[1],m[2]):home()}
 qi.addEventListener("input",()=>{$("#x").style.display=qi.value?"block":"none";clearTimeout(qi.h);qi.h=setTimeout(route,120)});
 $("#x").onclick=()=>{qi.value="";$("#x").style.display="none";route();qi.focus()};
 $("#logo").onclick=()=>{qi.value="";$("#x").style.display="none";location.hash="#/";route()};
 addEventListener("hashchange",()=>{qi.value="";$("#x").style.display="none";route()});
 app.addEventListener("click",ev=>{const b=ev.target.closest(".cp");if(!b)return;const c=D.parts.flatMap(p=>p.chapters).find(c=>c.n==b.dataset.c),s=c.sections.find(s=>s.n==b.dataset.s),t=b.dataset.t+"\n"+cite(c,s);(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>toast("Mesure copiée ✓"),()=>toast("Copie impossible"))});
+app.addEventListener("click",ev=>{if(ev.target.closest(".more"))search(qi.value.trim(),true)});
 fetch("data/programme.json").then(r=>r.json()).then(d=>{D=d;
-for(const p of d.parts)for(const c of p.chapters)for(const s of c.sections){CH[c.n]=c;const cw=norm(c.title+" "+s.title).split(/[^a-z0-9]+/);
-if(s.intro)E.push({c,s,intro:1,m:{t:s.intro},w:norm(s.intro).split(/[^a-z0-9]+/),cw});
-for(const m of s.items)E.push({c,s,m,w:norm(m.t+" "+(m.sub||[]).join(" ")).split(/[^a-z0-9]+/),cw})}route()}).catch(()=>app.innerHTML='<p class="none">Données indisponibles. Réessaie avec une connexion.</p>');
+for(const p of d.parts)for(const c of p.chapters)for(const s of c.sections){CH[c.n]=c;const cw=words(c.title+" "+s.title);
+if(s.intro)E.push({c,s,intro:1,m:{t:s.intro},w:words(s.intro),cw});
+for(const m of s.items)E.push({c,s,m,w:words(m.t+" "+(m.sub||[]).join(" ")),cw})}route()}).catch(()=>app.innerHTML='<p class="none">Données indisponibles. Réessaie avec une connexion.</p>');
 if("serviceWorker"in navigator)addEventListener("load",()=>navigator.serviceWorker.register("sw.js"));
 </script>
 </body>

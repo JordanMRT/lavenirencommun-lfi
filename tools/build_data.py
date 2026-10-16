@@ -2,7 +2,7 @@
 """Construit data/programme.json depuis les pages HTML du programme.
 Usage: python3 build_data.py <dossier_pages_parties_et_chapitres> <dossier_sections> <sortie.json>
 Dépendances: beautifulsoup4, lxml (+ zstandard si des pages sont compressées zstd)."""
-import sys, os, re, io, gzip, json, glob
+import sys, os, re, io, gzip, json, glob, unicodedata
 from bs4 import BeautifulSoup
 
 EDITION = {"label": "L'Avenir en commun, édition 2025", "snapshot": "2026-05-03",
@@ -20,7 +20,8 @@ def read(path):
         import zstandard; b = zstandard.ZstdDecompressor().stream_reader(io.BytesIO(b)).read()
     return BeautifulSoup(b.decode("utf-8", "replace"), "lxml")
 
-def txt(el): return " ".join(el.get_text(" ", strip=True).split())
+INVISIBLES = dict.fromkeys(map(ord, "\u200b\u200c\u200d\ufeff\u00ad"))  # espaces de largeur nulle, trait d'union conditionnel
+def txt(el): return unicodedata.normalize("NFC", " ".join(el.get_text(" ", strip=True).split()).translate(INVISIBLES))
 
 def main(pages, secs, out):
     titles, parts = {}, []
