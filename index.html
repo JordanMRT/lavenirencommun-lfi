@@ -13,15 +13,16 @@
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="icon" href="icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..900&family=JetBrains+Mono:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,600;0,700;0,900;1,900&family=Gowun+Batang:wght@400;700&family=Archivo:wdth,wght@100..125,400..900&family=JetBrains+Mono:wght@300;500;700&display=swap" rel="stylesheet">
 <style>
 
 :root{
-  --ink:#1d1245;
-  --bg:antiquewhite;
-  --mut:#6e6590;
-  --or:#E8672A;
-  --mk:#ffd23f;
+  --ink:#212320;
+  --bg:#FFFCF4;
+  --mut:#6b6c66;
+  --violet:#4C0297;
+  --red:#D1271C;
+  --mk:#f9c900;
   --a:#E8672A;
   --b:#3B2A86;
   box-sizing:border-box;
@@ -35,27 +36,37 @@ html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 100px)}
 
 body{
   margin:0;
-  font:400 16px/1.5 "Archivo",system-ui,-apple-system,sans-serif;
+  font:400 17px/1.55 "Gowun Batang",Georgia,"Times New Roman",serif;
   background:var(--bg);
   color:var(--ink);
   -webkit-text-size-adjust:100%
 }
 
 .d{
-  font-family:"Archivo",system-ui,sans-serif;
+  font-family:"Public Sans",system-ui,sans-serif;
   font-weight:900;
-  font-stretch:125%;
   text-transform:uppercase;
   line-height:.95;
   letter-spacing:-.01em;margin:0
 }
 
 .mono{
-  font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;
-  font-weight:300;
+  font-family:"Public Sans",system-ui,sans-serif;
+  font-weight:700;
   text-transform:uppercase;
   letter-spacing:.12em;
   font-size:11px
+}
+
+/* Affiches de chapitre : polices figées (design Automobile 2027) */
+.cv .d{
+  font-family:"Archivo",system-ui,sans-serif;
+  font-stretch:125%
+}
+
+.cv .mono{
+  font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  font-weight:300
 }
 
 header{
@@ -80,19 +91,19 @@ header{
 }
 
 .logo b{
-  color:var(--or)
+  color:var(--red)
 }
 
 .search{
   position:relative;
-  background:var(--ink);
-  box-shadow:6px 6px 0 var(--or);
+  background:var(--violet);
+  box-shadow:6px 6px 0 var(--red);
   margin-right:6px
 }
 
 .search input{
   width:100%;
-  font:300 16px "JetBrains Mono",ui-monospace,monospace;
+  font:600 16px "Public Sans",system-ui,sans-serif;
   letter-spacing:.04em;
   color:#fff;
   background:transparent;
@@ -117,7 +128,7 @@ header{
   margin-top:-11px;
   width:22px;
   height:22px;
-  stroke:var(--or);
+  stroke:var(--red);
   fill:none;
   stroke-width:3.2;
   stroke-linecap:round
@@ -129,7 +140,7 @@ header{
   top:50%;
   transform:translateY(-50%);
   border:0;
-  background:var(--or);
+  background:var(--red);
   color:#fff;
   width:34px;
   height:34px;
@@ -150,7 +161,7 @@ main{
   font-size:clamp(34px,10.5vw,76px)
 }
 .g{
-  background:linear-gradient(100deg,#E8672A,#3B2A86 85%);
+  background:linear-gradient(100deg,var(--violet),var(--red) 85%);
   -webkit-background-clip:text;
   background-clip:text;
   color:transparent
@@ -176,7 +187,7 @@ main{
 
 .ph .mono{
   flex:1;
-  font-weight:500;
+  font-weight:700;
   line-height:1.35
 }
 
@@ -290,7 +301,7 @@ a.cv:active{
   margin:0 0 14px;
   color:var(--ink);
   text-decoration:none;
-  font-weight:500;
+  font-weight:700;
   background:var(--mk);
   padding:6px 10px
 }
@@ -308,8 +319,8 @@ summary{
   align-items:center;
   padding:16px;
   background:color-mix(in srgb,var(--a) 13%,var(--bg));
-  font-weight:800;
-  font-stretch:112%;
+  font-family:"Public Sans",system-ui,sans-serif;
+  font-weight:700;
   font-size:17px;
   line-height:1.2
 }
@@ -319,12 +330,12 @@ summary::-webkit-details-marker{
 }
 
 .sn{
-  font:500 12px "JetBrains Mono",monospace;
+  font:700 12px "Public Sans",system-ui,sans-serif;
   color:var(--a)
 }
 
 .cnt{
-  font:700 12px "JetBrains Mono",monospace;
+  font:700 12px "Public Sans",system-ui,sans-serif;
   font-style:normal;
   background:var(--ink);
   color:#fff;
@@ -350,7 +361,6 @@ details[open] .cnt{
 }
 
 .intro{
-  font-style:italic;
   color:var(--mut);
   margin:0 0 14px;
   font-size:15px
@@ -393,7 +403,7 @@ ul.ms{
 
 .badge{
   display:inline-block;
-  font:500 10px "JetBrains Mono",monospace;letter-spacing:.14em;
+  font:700 10px "Public Sans",system-ui,sans-serif;letter-spacing:.14em;
   text-transform:uppercase;
   background:#fff;
   color:var(--ink);
@@ -429,7 +439,7 @@ ul.ms{
 .src{
   display:inline-block;
   margin-top:14px;
-  font:500 11px "JetBrains Mono",monospace;
+  font:700 11px "Public Sans",system-ui,sans-serif;
   letter-spacing:.1em;
   text-transform:uppercase;
   color:var(--ink);
@@ -471,13 +481,12 @@ mark{
   place-items:center;
   background:linear-gradient(100deg,var(--a),var(--b));
   color:#fff;
-  font-size:17px;
-  font-stretch:112%
+  font-size:17px
 }
 
 .rg a{
-  font-weight:800;
-  font-stretch:112%;
+  font-family:"Public Sans",system-ui,sans-serif;
+  font-weight:700;
   color:var(--ink);
   text-decoration:none;
   font-size:18px;
@@ -486,7 +495,7 @@ mark{
 
 .rg small{
   display:block;
-  font:300 10px "JetBrains Mono",monospace;
+  font:600 10px "Public Sans",system-ui,sans-serif;
   text-transform:uppercase;
   letter-spacing:.1em;
   color:var(--mut);
@@ -499,9 +508,21 @@ mark{
   color:var(--mut)
 }
 
+.foot-logo{
+  display:block;
+  width:120px;
+  height:auto;
+  margin-bottom:14px
+}
+
+footer a{
+  color:var(--violet);
+  font-weight:700
+}
+
 footer{
   margin-top:40px;
-  font:300 10px/1.7 "JetBrains Mono",monospace;
+  font:600 10px/1.7 "Public Sans",system-ui,sans-serif;
   text-transform:uppercase;
   letter-spacing:.1em;
   color:var(--mut)
@@ -514,7 +535,7 @@ footer{
   transform:translate(-50%,30px);
   background:var(--ink);
   color:#fff;
-  padding:11px 18px;font:500 12px "JetBrains Mono",monospace;
+  padding:11px 18px;font:700 12px "Public Sans",system-ui,sans-serif;
   text-transform:uppercase;
   letter-spacing:.1em;
   opacity:0;
@@ -555,7 +576,7 @@ function mesure(m,c,s,alts){const h=x=>alts?hl(x,alts.flat()):esc(x);return`<li 
 const url=(c,s)=>`${D.meta.base}/chapitre${c}/s${s}`;
 function cover(c,big){const k=c.sections.reduce((a,s)=>a+s.items.length,0),t=big?"div":"a";return`<${t} class="cv${big?" big":""}" style="${vars(c.n)}"${big?"":` href="#/c/${c.n}"`}>${art(c.n)}<span class="mono sub">${big?esc(D.parts.find(p=>p.chapters.includes(c)).title):"Chapitre"}</span><${big?"h2":"b"} class="d t">${esc(c.title)}</${big?"h2":"b"}><span class="mono k">${k} mesures</span><span class="d num">${pad(c.n)}</span></${t}>`}
 function home(){app.innerHTML=`<div class="hero"><h1 class="d">Toutes les mesures, <span class="g">en un mot.</span></h1><p class="mono">${esc(D.meta.label)} · ${D.meta.count} mesures</p></div>`+D.parts.map((p,i)=>`<div class="ph"><span class="d pn">${pad(i+1)}</span><span class="mono">${esc(p.title)}</span></div><div class="grid">${p.chapters.map(c=>cover(c)).join("")}</div>`).join("")+foot();scrollTo(0,0)}
-function foot(){const m=D.meta.missing.length;return`<footer>Texte : ${D.meta.label}, d'après l'archive du ${D.meta.snapshot.split("-").reverse().join("/")}. Outil non officiel de consultation.${m?`<br>${m} section(s) pas encore importée(s).`:""}</footer>`}
+function foot(){const m=D.meta.missing.length;return`<footer><a href="https://lafranceinsoumise.fr" target="_blank" rel="noopener"><img class="foot-logo" src="img/logo-lfi.png" alt="La France insoumise" width="120" height="40"></a>Texte : ${D.meta.label}, d'après l'archive du ${D.meta.snapshot.split("-").reverse().join("/")}. Outil non officiel de consultation.${m?`<br>${m} section(s) pas encore importée(s).`:""}<br><a href="https://lafranceinsoumise.fr" target="_blank" rel="noopener">lafranceinsoumise.fr</a> · <a href="https://melenchon2027.fr" target="_blank" rel="noopener">melenchon2027.fr</a></footer>`}
 function chapter(n,sn){const c=D.parts.flatMap(p=>p.chapters).find(c=>c.n==n);if(!c)return home();
 app.innerHTML=`<a class="back mono" href="#/">← Tous les thèmes</a>${cover(c,1)}<div style="${vars(c.n)}">`+c.sections.map(s=>`<details class="sec" id="s${s.n}"${s.n==sn?" open":""}><summary><span class="sn">${pad(s.n)}</span><span>${esc(s.title)}</span><i class="cnt">${s.missing?"—":s.items.length}</i></summary><div class="body">${s.missing?`<div class="miss">Section pas encore importée (page absente de l'archive).<br><a class="src" href="${url(c.n,s.n)}" target="_blank" rel="noopener">Voir la source ↗</a></div>`:`${s.intro?`<p class="intro">${esc(s.intro)}</p>`:""}<ul class="ms">${s.items.map(m=>mesure(m,c,s)).join("")}</ul><a class="src" href="${url(c.n,s.n)}" target="_blank" rel="noopener">Source officielle ↗</a>`}</div></details>`).join("")+`</div>`+foot();
 if(sn){const el=$("#s"+sn);el&&setTimeout(()=>el.scrollIntoView({behavior:"smooth"}),50)}else scrollTo(0,0)}

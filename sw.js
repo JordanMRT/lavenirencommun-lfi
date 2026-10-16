@@ -1,4 +1,4 @@
-const V="programme-v3",PRE=["./","index.html","data/programme.json","manifest.webmanifest","icons/icon-192.png"];
+const V="programme-v4",PRE=["./","index.html","data/programme.json","manifest.webmanifest","icons/icon-192.png","img/logo-lfi.png"];
 self.addEventListener("install",e=>{e.waitUntil(caches.open(V).then(c=>c.addAll(PRE)).then(()=>self.skipWaiting()))});
 self.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==V).map(x=>caches.delete(x)))).then(()=>self.clients.claim()))});
 self.addEventListener("fetch",e=>{if(e.request.method!=="GET")return;const same=new URL(e.request.url).origin===location.origin;
