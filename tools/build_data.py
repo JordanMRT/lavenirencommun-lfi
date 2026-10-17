@@ -23,6 +23,17 @@ def read(path):
 INVISIBLES = dict.fromkeys(map(ord, "\u200b\u200c\u200d\ufeff\u00ad"))  # espaces de largeur nulle, trait d'union conditionnel
 def txt(el): return unicodedata.normalize("NFC", " ".join(el.get_text(" ", strip=True).split()).translate(INVISIBLES))
 
+def parse_section(S, m, box):
+    """Remplit S (titre, intro, items) depuis <main> m et son <section class="contenu"> box.
+    Partagé par le build complet et par tools/merge_missing.py."""
+    h1 = m.find("h1"); S["title"] = txt(h1) if h1 else S["title"]
+    for el in box.find_all(["p", "div"], recursive=False):
+        k = el.get("class") or []
+        if el.name == "p": S["intro"] = (S["intro"] + " " + txt(el)).strip()
+        elif "mesure-cle" in k: S["items"].append({"t": txt(el), "k": 1})
+        elif "mesure" in k: S["items"].append({"t": txt(el), "k": 0})
+        elif "sous-mesure" in k and S["items"]: S["items"][-1].setdefault("sub", []).append(txt(el))
+
 def main(pages, secs, out):
     titles, parts = {}, []
     for slug, ptitle in PARTS:
@@ -52,13 +63,7 @@ def main(pages, secs, out):
                 box = m and m.find("section", class_="contenu")
                 if not box: S["missing"] = True; data["meta"]["missing"].append(f"chapitre{c}/s{s}")
                 else:
-                    h1 = m.find("h1"); S["title"] = txt(h1) if h1 else S["title"]
-                    for el in box.find_all(["p", "div"], recursive=False):
-                        k = el.get("class") or []
-                        if el.name == "p": S["intro"] = (S["intro"] + " " + txt(el)).strip()
-                        elif "mesure-cle" in k: S["items"].append({"t": txt(el), "k": 1})
-                        elif "mesure" in k: S["items"].append({"t": txt(el), "k": 0})
-                        elif "sous-mesure" in k and S["items"]: S["items"][-1].setdefault("sub", []).append(txt(el))
+                    parse_section(S, m, box)
                     total += len(S["items"])
                 C["sections"].append(S)
             P["chapters"].append(C)

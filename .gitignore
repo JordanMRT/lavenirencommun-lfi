@@ -1,1 +1,4 @@
 .DS_Store
+.venv/
+pages_manquantes/
+__pycache__/
