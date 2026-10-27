@@ -2,13 +2,16 @@
 """Contrôle d'intégrité de data/programme.json après un build (édition 2025, 2027…).
 Usage: python3 tools/validate_data.py [data/programme.json] [--expect N] [--prev ancien.json] [--html index.html]
 Code de sortie 1 s'il y a des ERREURS (les AVERTISSEMENTS n'échouent pas)."""
-import sys, re, json, argparse, unicodedata
+import sys, os, re, json, argparse, unicodedata
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from mesure_hash import mesure_hash
 
 ap = argparse.ArgumentParser()
 ap.add_argument("path", nargs="?", default="data/programme.json")
 ap.add_argument("--expect", type=int, help="nombre de mesures attendu (ex. 1069 pour 2027)")
 ap.add_argument("--prev", help="ancien JSON, pour comparer les volumes")
 ap.add_argument("--html", default="index.html", help="index.html, pour vérifier PAL/MOTIF")
+ap.add_argument("--exemples", default="data/exemples.json", help="encarts « Comprendre cette mesure » (ignoré s'il n'existe pas)")
 a = ap.parse_args()
 
 err, warn = [], []
@@ -18,6 +21,7 @@ for k in ("label", "base", "count", "missing"):
     if k not in meta: err.append(f"meta.{k} absent")
 
 total = keys = 0
+hashes = {}
 chap_ids, seen = [], {}
 for p in d.get("parts", []):
     if not p.get("title") or not p.get("chapters"): err.append(f"partie vide ou sans titre : {p.get('title')!r}")
@@ -48,6 +52,7 @@ for p in d.get("parts", []):
                     if re.match(r"^\s*(\d+[\.\)]|[-–•])\s", t): warn.append(f"{ref} : numérotation/puce en début de texte")
                     if len(t) < 20: warn.append(f"{ref} : très court ({len(t)})")
                     if len(t) > 900: warn.append(f"{ref} : très long ({len(t)}), mesures collées ?")
+                hashes[mesure_hash(it["t"], it.get("sub", []))] = where
                 if it["t"] in seen: warn.append(f"{where} : doublon de {seen[it['t']]} « {it['t'][:45]} »")
                 seen[it["t"]] = where
 
@@ -70,6 +75,37 @@ if a.prev:
     on = sum(len(s["items"]) for p in o["parts"] for c in p["chapters"] for s in c["sections"])
     print(f"Comparaison : ancien {on} mesures → nouveau {total} ({(total-on)/on:+.0%})")
     if total < on * 0.8: warn.append("baisse de plus de 20 % des mesures : extraction incomplète ?")
+
+if os.path.exists(a.exemples):
+    try: ex = json.load(open(a.exemples, encoding="utf-8"))
+    except Exception as e: ex = {}; err.append(f"{a.exemples} illisible : {e}")
+    nrelu = nbro = norph = 0
+    for k, e in ex.items():
+        nom = f"encart {k} ({e.get('ref', '?')} « {str(e.get('mesure', ''))[:40]} »)"
+        etat = e.get("etat")
+        if etat not in ("brouillon", "relu"): err.append(f"{nom} : etat doit être « brouillon » ou « relu » ({etat!r})"); continue
+        if etat == "relu": nrelu += 1
+        else: nbro += 1
+        if k not in hashes:
+            norph += 1; warn.append(f"{nom} : orphelin, la mesure a changé ou n'existe plus (encart masqué dans l'app, à réécrire et relire)")
+        elif e.get("ref") and e["ref"] != hashes[k]: warn.append(f"{nom} : trouvé en {hashes[k]}, ref indiquée {e['ref']}")
+        if not str(e.get("clair", "")).strip(): err.append(f"{nom} : « clair » vide")
+        nums = [s_.get("n") for s_ in e.get("src", [])]
+        if len(nums) != len(set(nums)): err.append(f"{nom} : numéros de sources en double")
+        for s_ in e.get("src", []):
+            if not s_.get("n") or not s_.get("l"): err.append(f"{nom} : source sans n ou sans l")
+            if s_.get("u") and not str(s_["u"]).startswith("https://"): err.append(f"{nom} : lien source non https ({s_['u']})")
+        cites = [r for blk in e.get("termes", []) + e.get("chiffres", []) for r in blk.get("src", [])]
+        for r in cites:
+            if r not in nums: err.append(f"{nom} : renvoi [{r}] sans source correspondante")
+        for c_ in e.get("chiffres", []):
+            if not str(c_.get("t", "")).strip(): err.append(f"{nom} : chiffre vide")
+            if etat == "relu" and not c_.get("src"): err.append(f"{nom} : chiffre sans source (interdit pour un encart relu)")
+        if e.get("cas") is not None and not str(e["cas"].get("t", "")).strip(): err.append(f"{nom} : cas type vide")
+        if etat == "relu":
+            if not re.match(r"^\d{4}-\d{2}-\d{2}$", str(e.get("relu", ""))): err.append(f"{nom} : date de relecture manquante (AAAA-MM-JJ)")
+            if not e.get("src"): err.append(f"{nom} : encart relu sans aucune source")
+    print(f"Encarts : {nrelu} relus (affichés), {nbro} brouillons (aperçu seulement), {norph} orphelins")
 
 print(f"{len(chap_ids)} chapitres · {total} mesures ({keys} phares) · {len(meta.get('missing', []))} sections manquantes")
 for w in warn: print("AVERTISSEMENT", w)

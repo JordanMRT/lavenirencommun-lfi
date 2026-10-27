@@ -574,6 +574,125 @@ footer{
   box-shadow:4px 4px 0 var(--red)
 }
 
+.ex{
+  margin:12px 0 0
+}
+
+.ex summary{
+  list-style:none;
+  cursor:pointer;
+  display:inline-block;
+  padding:10px 14px;
+  background:var(--violet);
+  color:#fff;
+  box-shadow:5px 5px 0 var(--red);
+  font:800 14px/1 "Public Sans",system-ui,sans-serif;
+  font-style:normal
+}
+
+.ex summary::-webkit-details-marker{
+  display:none
+}
+
+.ex summary:focus-visible{
+  outline:3px solid var(--mk);
+  outline-offset:3px
+}
+
+.ex[open] summary{
+  box-shadow:2px 2px 0 var(--red)
+}
+
+.m.k .ex summary{
+  background:#fff;
+  color:var(--ink)
+}
+
+.ex-b{
+  margin:16px 0 0;
+  padding:14px 16px;
+  background:var(--bg);
+  color:var(--ink);
+  font-weight:400;
+  font-size:16px;
+  line-height:1.55;
+  border-left:6px solid var(--violet)
+}
+
+.ex-b h3{
+  font:800 15px/1.2 "Public Sans",system-ui,sans-serif;
+  margin:16px 0 6px
+}
+
+.ex-b h3:first-child,
+.ex-d + h3{
+  margin-top:0
+}
+
+.ex-b p{
+  margin:0 0 8px
+}
+
+.ex-b dl{
+  margin:0
+}
+
+.ex-b dt{
+  font:800 14px/1.4 "Public Sans",system-ui,sans-serif
+}
+
+.ex-b dd{
+  margin:0 0 8px
+}
+
+.ex-c{
+  background:var(--mk);
+  color:#212320;
+  padding:10px 14px;
+  margin:6px 0
+}
+
+.ex-t{
+  display:inline-block;
+  background:var(--red);
+  color:#fff;
+  font:800 12px/1 "Public Sans",system-ui,sans-serif;
+  padding:5px 7px;
+  margin-right:6px
+}
+
+.ex-d{
+  display:block;
+  background:var(--red);
+  color:#fff;
+  font:700 13px/1.4 "Public Sans",system-ui,sans-serif;
+  padding:8px 12px;
+  margin:0 0 14px
+}
+
+.ex-f{
+  color:var(--mut);
+  font-size:13px
+}
+
+.ex-r{
+  color:var(--mut);
+  font-size:14px;
+  line-height:1.5
+}
+
+.ex-r a{
+  color:inherit
+}
+
+.ex-p{
+  margin:16px 0 0;
+  padding-top:10px;
+  border-top:4px solid var(--violet);
+  color:var(--mut);
+  font:700 13px/1.5 "Public Sans",system-ui,sans-serif
+}
+
 </style>
 </head>
 <body>
@@ -600,7 +719,13 @@ const tok=q=>norm(q).split(/[^a-z0-9]+/).filter(t=>t.length>1).map(t=>{const b=t
 function hl(t,alts){const r=[];t.replace(/[\p{L}\p{M}\p{N}]+/gu,(w,i)=>{const n=fold(norm(w));if(alts.some(a=>n.startsWith(a)))r.push([i,i+w.length])});let o="",p=0;for(const[a,b]of r){o+=esc(t.slice(p,a))+"<mark>"+esc(t.slice(a,b))+"</mark>";p=b}return o+esc(t.slice(p))}
 function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove("on"),1600)}
 function cite(c,s){return`— ${D.meta.label}, ch. ${c.n} « ${c.title} », ${s.title}`}
-function mesure(m,c,s,alts){const h=x=>alts?hl(x,alts.flat()):esc(x);return`<li class="m${m.k?" k":""}">${m.k?'<span class="badge">★ Mesure phare</span><br>':""}${h(m.t)}${m.sub?`<ul>${m.sub.map(x=>`<li>${h(x)}</li>`).join("")}</ul>`:""}<button class="cp" data-c="${c.n}" data-s="${s.n}" data-t="${esc(m.t+(m.sub?"\n"+m.sub.map(x=>"– "+x).join("\n"):""))}" aria-label="Copier">⧉</button></li>`}
+const SP=/[ \t\n\r\f\v\u00a0\u2000-\u200a\u202f\u205f\u3000]+/g;
+const hash=m=>m.h||(m.h=(()=>{let x=2166136261;for(const b of new TextEncoder().encode([m.t,...(m.sub||[])].map(t=>t.normalize("NFC").replace(SP," ").trim()).join("\n"))){x^=b;x=Math.imul(x,16777619)>>>0}return x.toString(16).padStart(8,"0")})());
+let EX={};const BR=/[?&]brouillons/.test(location.search);
+const rf=a=>a&&a.length?`<span class="ex-f">[${a.join(", ")}]</span>`:"";
+function ex(m){const e=EX[hash(m)];if(!e||!e.clair||(e.etat!=="relu"&&!BR))return"";const S=e.src||[];
+return`<details class="ex"><summary>Comprendre cette mesure</summary><div class="ex-b">${e.etat!=="relu"?'<p class="ex-d">Brouillon : non relu, visible seulement en aperçu</p>':""}<h3>En clair</h3><p>${esc(e.clair)}</p>${(e.termes||[]).length?`<h3>Mots à connaître</h3><dl>${e.termes.map(t=>`<dt>${esc(t.mot)}</dt><dd>${esc(t.def)} ${rf(t.src)}</dd>`).join("")}</dl>`:""}${(e.chiffres||[]).length?`<h3>Chiffres</h3>${e.chiffres.map(c=>`<div class="ex-c">${esc(c.t)} ${rf(c.src)}</div>`).join("")}`:""}${e.cas?`<h3><span class="ex-t">Illustration</span>Cas type</h3><p>${esc(e.cas.t)}</p>`:""}${S.length?`<p class="ex-r">${S.map(x=>`[${esc(String(x.n))}] ${/^https:\/\//.test(x.u||"")?`<a href="${esc(x.u)}" target="_blank" rel="noopener">${esc(x.l)}</a>`:esc(x.l)}`).join("<br>")}</p>`:""}<p class="ex-p">Éclairage non officiel, il n’engage pas le programme ni le parti.</p></div></details>`}
+function mesure(m,c,s,alts){const h=x=>alts?hl(x,alts.flat()):esc(x);return`<li class="m${m.k?" k":""}">${m.k?'<span class="badge">★ Mesure phare</span><br>':""}${h(m.t)}${m.sub?`<ul>${m.sub.map(x=>`<li>${h(x)}</li>`).join("")}</ul>`:""}${ex(m)}<button class="cp" data-c="${c.n}" data-s="${s.n}" data-t="${esc(m.t+(m.sub?"\n"+m.sub.map(x=>"– "+x).join("\n"):""))}" aria-label="Copier">⧉</button></li>`}
 const url=(c,s)=>`${D.meta.base}/chapitre${c}/s${s}`;
 function cover(c,big){const k=c.sections.reduce((a,s)=>a+s.items.length,0),t=big?"div":"a";return`<${t} class="cv${big?" big":""}" style="${vars(c.n)}"${big?"":` href="#/c/${c.n}"`}>${art(c.n)}<span class="mono sub">${big?esc(D.parts.find(p=>p.chapters.includes(c)).title):"Chapitre"}</span><${big?"h2":"b"} class="d t">${esc(c.title)}</${big?"h2":"b"}><span class="mono k">${k} mesures</span><span class="d num">${pad(c.n)}</span></${t}>`}
 function home(){app.innerHTML=`<div class="hero"><h1 class="d">Toutes les mesures, <span class="g">en un mot.</span></h1><p class="mono">${esc(D.meta.label)} · ${D.meta.count} mesures</p></div>`+D.parts.map((p,i)=>`<div class="ph"><span class="d pn">${pad(i+1)}</span><span class="mono">${esc(p.title)}</span></div><div class="grid">${p.chapters.map(c=>cover(c)).join("")}</div>`).join("")+foot();scrollTo(0,0)}
@@ -623,7 +748,7 @@ $("#logo").onclick=()=>{qi.value="";$("#x").style.display="none";location.hash="
 addEventListener("hashchange",()=>{qi.value="";$("#x").style.display="none";route()});
 app.addEventListener("click",ev=>{const b=ev.target.closest(".cp");if(!b)return;const c=D.parts.flatMap(p=>p.chapters).find(c=>c.n==b.dataset.c),s=c.sections.find(s=>s.n==b.dataset.s),t=b.dataset.t+"\n"+cite(c,s);(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>toast("Mesure copiée ✓"),()=>toast("Copie impossible"))});
 app.addEventListener("click",ev=>{if(ev.target.closest(".more"))search(qi.value.trim(),true)});
-fetch("data/programme.json").then(r=>r.json()).then(d=>{D=d;
+fetch("data/exemples.json").then(r=>r.ok?r.json():{}).catch(()=>({})).then(x=>{EX=x;return fetch("data/programme.json")}).then(r=>r.json()).then(d=>{D=d;
 for(const p of d.parts)for(const c of p.chapters)for(const s of c.sections){CH[c.n]=c;const cw=words(c.title+" "+s.title);
 if(s.intro)E.push({c,s,intro:1,m:{t:s.intro},w:words(s.intro),cw});
 for(const m of s.items)E.push({c,s,m,w:words(m.t+" "+(m.sub||[]).join(" ")),cw})}route()}).catch(()=>app.innerHTML='<p class="none">Données indisponibles. Réessaie avec une connexion.</p>');

@@ -1,0 +1,318 @@
+{
+ "1cb801e6": {
+  "ref": "8.4",
+  "mesure": "Porter immédiatement le SMIC mensuel à 1600 euros net et indexer les salaires su",
+  "etat": "brouillon",
+  "clair": "Le SMIC mensuel passerait immédiatement à 1 600 € nets (le texte écrit « 1600 euros net »). Les salaires seraient aussi indexés sur l’inflation, dans le privé comme dans la fonction publique.",
+  "termes": [
+   {
+    "mot": "Indexer",
+    "def": "Lier automatiquement l’évolution d’un montant à celle d’un indice, ici l’inflation (la hausse générale des prix)."
+   }
+  ],
+  "cas": {
+   "t": "Illustration avec un chiffre supposé : si le SMIC net était de 1 400 € par mois, passer à 1 600 € représenterait 200 € de plus par mois, soit 2 400 € sur l’année."
+  },
+  "note": "À sourcer : définition d’« indexer » ; SMIC net actuel (chiffre officiel) pour remplacer le chiffre supposé, ou garder l’illustration supposée."
+ },
+ "846cae85": {
+  "ref": "8.2",
+  "mesure": "Rétablir immédiatement la durée légale hebdomadaire à 35 heures (en majorant les",
+  "etat": "brouillon",
+  "clair": "La durée légale du travail serait rétablie à 35 heures par semaine, immédiatement. Les heures supplémentaires seraient majorées de 25 % pour les 4 premières et de 50 % au-delà (le texte ajoute « cotisations incluses »). La semaine passerait à 32 heures dans les métiers pénibles ou de nuit, et le texte propose de favoriser la généralisation des 32 heures par la négociation collective.",
+  "termes": [
+   {
+    "mot": "Heures supplémentaires",
+    "def": "Heures travaillées au-delà de la durée légale du travail."
+   },
+   {
+    "mot": "Majorer",
+    "def": "Payer plus : ici, le taux horaire normal augmenté de 25 % ou de 50 %."
+   }
+  ],
+  "cas": {
+   "t": "Illustration avec un taux horaire supposé de 15 € : pour 6 heures supplémentaires dans la semaine, les 4 premières sont payées 15 × 1,25 = 18,75 € l’heure (75 €) et les 2 suivantes 15 × 1,50 = 22,50 € l’heure (45 €), soit 120 € pour ces 6 heures."
+  },
+  "note": "À valider avant relecture : sens exact de « cotisations incluses » (le cas type suppose une majoration simple du taux horaire) ; définitions à sourcer."
+ },
+ "98ea353d": {
+  "ref": "8.8",
+  "mesure": "Abroger la réforme d’Emmanuel Macron passant l’âge de départ à la retraite à 64 ",
+  "etat": "brouillon",
+  "clair": "La réforme qui a porté l’âge de départ à la retraite à 64 ans serait abrogée. Le droit de partir à la retraite à 60 ans à taux plein serait restauré, pour 40 annuités de cotisations.",
+  "termes": [
+   {
+    "mot": "Abroger",
+    "def": "Supprimer une loi ou une réforme existante."
+   },
+   {
+    "mot": "Taux plein",
+    "def": "Pension calculée sans réduction pour durée de cotisation insuffisante."
+   },
+   {
+    "mot": "Annuité",
+    "def": "Une année de cotisation (soit quatre trimestres)."
+   }
+  ],
+  "note": "À sourcer : définitions de « taux plein » et d’« annuité » (source officielle type service-public.fr / assurance retraite). Pas de chiffre de coût dans la mesure."
+ },
+ "4217b9c7": {
+  "ref": "7.4",
+  "mesure": "Créer une garantie d’autonomie qui permettra que nul ne soit privé de sa dignité",
+  "etat": "brouillon",
+  "clair": "Une garantie d’autonomie serait créée pour que le revenu mensuel de chaque personne atteigne le seuil de pauvreté, que le texte chiffre à 1 216 euros pour une personne seule.",
+  "termes": [
+   {
+    "mot": "Seuil de pauvreté",
+    "def": "Niveau de revenu en dessous duquel une personne est considérée comme pauvre ; ici, le texte donne 1 216 euros pour une personne seule."
+   }
+  ],
+  "cas": {
+   "t": "Illustration avec un revenu supposé : pour une personne seule dont le revenu mensuel serait de 900 €, l’écart avec 1 216 € est de 316 € par mois."
+  },
+  "note": "À sourcer : définition du seuil de pauvreté (Insee) et date du chiffre de 1 216 €. Ne pas décrire le mécanisme de versement : le texte ne le précise pas."
+ },
+ "b31184bd": {
+  "ref": "9.1",
+  "mesure": "Bloquer les prix des produits de première nécessité (alimentation, énergie, carb",
+  "etat": "brouillon",
+  "clair": "Les prix des produits de première nécessité (alimentation, énergie, carburant) seraient bloqués, et la « réduflation » serait interdite.",
+  "termes": [
+   {
+    "mot": "Réduflation",
+    "def": "Réduction des quantités pour le même prix (c’est la formule utilisée par le programme lui-même, section 7.4).",
+    "src": [
+     1
+    ]
+   }
+  ],
+  "src": [
+   {
+    "n": 1,
+    "l": "L’Avenir en commun, section 7.4 (« interdire la réduflation (réduction des quantités pour le même prix) »)"
+   }
+  ],
+  "note": "La définition vient du programme (7.4) : à relire dans la source. Rien sur la durée du blocage : ne pas préciser."
+ },
+ "5d6479f8": {
+  "ref": "6.5",
+  "mesure": "Rendre l’impôt sur le revenu plus progressif avec un barème à 14 tranches contre",
+  "etat": "brouillon",
+  "clair": "L’impôt sur le revenu deviendrait plus progressif : le barème passerait de 5 tranches à 14 tranches.",
+  "termes": [
+   {
+    "mot": "Barème progressif",
+    "def": "Système où le taux d’imposition augmente avec le revenu, par paliers."
+   },
+   {
+    "mot": "Tranche",
+    "def": "Partie du revenu soumise à un même taux d’imposition."
+   }
+  ],
+  "note": "Pas de seuils ni de taux dans la mesure : pas de cas type possible sans inventer. À sourcer : définitions (impots.gouv.fr)."
+ },
+ "5f280e90": {
+  "ref": "6.5",
+  "mesure": "Rétablir et renforcer l’impôt de solidarité sur la fortune (ISF), incluant un vo",
+  "etat": "brouillon",
+  "clair": "L’impôt de solidarité sur la fortune (ISF) serait rétabli et renforcé, avec un volet climatique destiné à taxer les gros pollueurs.",
+  "note": "À sourcer avant d’ajouter un mot à connaître : définition de l’ISF et de ce qui le remplace aujourd’hui (source officielle). Ne pas détailler le « volet climatique » : le texte ne le décrit pas."
+ },
+ "c93abcf0": {
+  "ref": "6.5",
+  "mesure": "Augmenter les droits de succession sur les plus hauts patrimoines en comptabilis",
+  "etat": "brouillon",
+  "clair": "Les droits de succession augmenteraient sur les plus hauts patrimoines, en comptant l’ensemble des dons et héritages reçus tout au long de la vie. Un héritage maximal de 12 millions d’euros serait créé, que le texte présente comme 100 fois le patrimoine net médian.",
+  "termes": [
+   {
+    "mot": "Patrimoine net médian",
+    "def": "Valeur de patrimoine (après déduction des dettes) qui partage les ménages en deux moitiés : la moitié en dessous, la moitié au-dessus."
+   }
+  ],
+  "note": "À sourcer : définition ; valeur du patrimoine net médian (Insee) pour vérifier le « 100 fois ». Ne pas préciser ce que l’« héritage maximal » implique (plafond, taxation au-delà) : le texte ne le dit pas."
+ },
+ "2c755717": {
+  "ref": "6.5",
+  "mesure": "Réduire la TVA sur les produits de première nécessité et réinstaurer une « TVA g",
+  "etat": "brouillon",
+  "clair": "La TVA serait réduite sur les produits de première nécessité, et une « TVA grand luxe » serait réinstaurée pour financer cette baisse.",
+  "termes": [
+   {
+    "mot": "TVA",
+    "def": "Taxe sur la valeur ajoutée : taxe incluse dans le prix de la plupart des achats."
+   }
+  ],
+  "note": "À sourcer : définition de la TVA. Pas de taux dans la mesure : ne pas en inventer."
+ },
+ "6f4f22fd": {
+  "ref": "6.3",
+  "mesure": "Interdire les licenciements boursiers et économiques par les entreprises qui ver",
+  "etat": "brouillon",
+  "clair": "Les entreprises qui versent des dividendes, ou qui bénéficient des aides de l’État, n’auraient plus le droit de procéder à des licenciements boursiers ni à des licenciements économiques.",
+  "termes": [
+   {
+    "mot": "Dividendes",
+    "def": "Part des bénéfices d’une entreprise versée à ses actionnaires."
+   },
+   {
+    "mot": "Licenciement boursier",
+    "def": "Terme du programme pour un licenciement lié à la rentabilité financière plutôt qu’à des difficultés de l’entreprise."
+   }
+  ],
+  "note": "À sourcer : « licenciement boursier » n’a pas de définition juridique à ma connaissance ; vérifier s’il existe une définition officielle ou dans le programme, sinon retirer ce mot."
+ },
+ "2d0ecc4e": {
+  "ref": "6.4",
+  "mesure": "Exiger de l’Union européenne que la Banque centrale européenne (BCE) transforme ",
+  "etat": "brouillon",
+  "clair": "Le programme demande à l’Union européenne que la Banque centrale européenne (BCE) transforme la part de la dette des États qu’elle détient en dettes perpétuelles à taux nul.",
+  "termes": [
+   {
+    "mot": "Dette perpétuelle",
+    "def": "Dette sans date de remboursement du capital."
+   },
+   {
+    "mot": "Taux nul",
+    "def": "Taux d’intérêt de 0 % : aucun intérêt à payer."
+   }
+  ],
+  "note": "À sourcer : définitions ; part de la dette publique française détenue par la BCE (chiffre officiel, Agence France Trésor / Banque de France). Ne pas dire si la mesure est applicable : c’est du débat."
+ },
+ "7b9d6e4d": {
+  "ref": "6.4",
+  "mesure": "Réaliser un audit citoyen de la dette publique pour déterminer la part illégitim",
+  "etat": "brouillon",
+  "clair": "Un audit citoyen de la dette publique serait réalisé pour déterminer la part de cette dette qui serait illégitime, afin de préparer un réaménagement négocié de la dette publique.",
+  "termes": [
+   {
+    "mot": "Audit",
+    "def": "Examen détaillé pour vérifier des comptes."
+   },
+   {
+    "mot": "Réaménagement de la dette",
+    "def": "Modification des conditions de remboursement d’une dette (durée, taux), négociée avec les créanciers."
+   }
+  ],
+  "note": "À sourcer : définitions. Le texte ne définit pas « illégitime » : ne pas le faire à sa place."
+ },
+ "acd0ec1a": {
+  "ref": "17.2",
+  "mesure": "Réaffirmer la supériorité des principes fondamentaux inscrits dans la Constituti",
+  "etat": "brouillon",
+  "clair": "La Constitution de la 6e République aurait la supériorité, pour ses principes fondamentaux, sur le droit européen. Un principe de non-régression écologique et sociale serait instauré : selon le texte, aucune norme européenne ne peut s’appliquer si elle est moins ambitieuse qu’une norme nationale sur le plan social ou écologique.",
+  "termes": [
+   {
+    "mot": "Non-régression",
+    "def": "Principe selon lequel on ne peut pas revenir à un niveau de protection inférieur à celui déjà acquis."
+   }
+  ],
+  "note": "À sourcer : définition de « non-régression ». Ne pas commenter la compatibilité avec les traités européens (sujet débattu)."
+ },
+ "74421c2b": {
+  "ref": "16.1",
+  "mesure": "Se retirer immédiatement du commandement intégré de l’OTAN puis, par étapes, de ",
+  "etat": "brouillon",
+  "clair": "La France quitterait immédiatement le commandement intégré de l’OTAN, puis sortirait, par étapes, de l’organisation elle-même.",
+  "termes": [
+   {
+    "mot": "OTAN",
+    "def": "Organisation du traité de l’Atlantique Nord, alliance militaire."
+   },
+   {
+    "mot": "Commandement intégré",
+    "def": "Structure militaire commune de l’OTAN, placée sous un commandement unique."
+   }
+  ],
+  "note": "À sourcer : définitions (otan.int / ministère des Armées). Ne pas décrire le calendrier « par étapes » : le texte ne le détaille pas."
+ },
+ "4936a870": {
+  "ref": "1.1",
+  "mesure": "Convoquer une Constituante pour passer à la 6e République",
+  "etat": "brouillon",
+  "clair": "Une Constituante serait convoquée pour passer à la 6e République. Les mesures suivantes de la même section précisent le processus : un référendum (article 11) pour l’engager, aucun parlementaire des anciennes assemblées dans la Constituante, et un référendum sur le projet de Constitution après deux ans de travaux.",
+  "termes": [
+   {
+    "mot": "Constituante",
+    "def": "Assemblée chargée de rédiger une nouvelle Constitution."
+   }
+  ],
+  "src": [
+   {
+    "n": 1,
+    "l": "L’Avenir en commun, section 1.1"
+   }
+  ],
+  "note": "Les détails viennent des mesures 1.1 (3 suivantes) : à relire dans la source. Définition de « Constituante » à sourcer."
+ },
+ "1f94dd86": {
+  "ref": "1.4",
+  "mesure": "Instaurer le Référendum d’initiative citoyenne (RIC), par lequel les citoyens qu",
+  "etat": "brouillon",
+  "clair": "Le Référendum d’initiative citoyenne (RIC) permettrait aux citoyens qui réunissent suffisamment de signatures de révoquer des élus, de proposer ou d’abroger une loi et de modifier la Constitution.",
+  "termes": [
+   {
+    "mot": "Révoquer",
+    "def": "Mettre fin au mandat d’un élu avant la fin de son mandat."
+   },
+   {
+    "mot": "Abroger",
+    "def": "Supprimer une loi existante."
+   }
+  ],
+  "note": "Le nombre de signatures n’est pas dans la mesure : ne pas en indiquer. Définitions à sourcer."
+ },
+ "a3214bd9": {
+  "ref": "13.3",
+  "mesure": "Sortir du nucléaire : abandonner les projets d’EPR (European Pressurized Reactor",
+  "etat": "brouillon",
+  "clair": "La France sortirait du nucléaire : les projets d’EPR seraient abandonnés, et le démantèlement, la réhabilitation et la reconversion des sites nucléaires et de l’ensemble de leur bassin de vie seraient planifiés.",
+  "termes": [
+   {
+    "mot": "EPR",
+    "def": "European Pressurized Reactor, en français Réacteur pressurisé européen (le texte donne lui-même ce développé)."
+   },
+   {
+    "mot": "Démantèlement",
+    "def": "Démontage d’une installation nucléaire à l’arrêt."
+   }
+  ],
+  "note": "À sourcer : définition de « démantèlement » ; pour un éventuel chiffre : part du nucléaire dans la production d’électricité (RTE). Aucun calendrier dans la mesure : ne pas en indiquer."
+ },
+ "8a97299d": {
+  "ref": "7.5",
+  "mesure": "Encadrer les loyers partout sur le territoire et à la baisse dans les grandes vi",
+  "etat": "brouillon",
+  "clair": "Les loyers seraient encadrés partout sur le territoire, et à la baisse dans les grandes villes.",
+  "note": "Pas de chiffre dans la mesure. À sourcer avant toute précision : ce que recouvre « encadrer » dans le droit actuel."
+ },
+ "b2ac10c9": {
+  "ref": "10.2",
+  "mesure": "Garantir le droit du sol intégral à tous les enfants nés en France, le rétablir ",
+  "etat": "brouillon",
+  "clair": "Tous les enfants nés en France se verraient garantir le droit du sol intégral, rétabli sur l’ensemble du territoire national, et l’accès à la nationalité française serait facilité.",
+  "termes": [
+   {
+    "mot": "Droit du sol",
+    "def": "Règle selon laquelle la nationalité s’acquiert en naissant sur le territoire d’un pays."
+   }
+  ],
+  "note": "À sourcer : définition et état actuel du droit (source officielle) avant toute comparaison. Ne pas détailler « faciliter l’accès » : le texte ne le précise pas."
+ },
+ "ab5f0025": {
+  "ref": "16.7",
+  "mesure": "Faciliter l’accès aux visas, régulariser les travailleurs, étudiants, parents d’",
+  "etat": "brouillon",
+  "clair": "Le programme prévoit de faciliter l’accès aux visas, de régulariser les travailleurs, les étudiants et les parents d’enfants scolarisés, et d’instituer la carte de séjour de dix ans comme titre de séjour de référence.",
+  "termes": [
+   {
+    "mot": "Régulariser",
+    "def": "Donner un titre de séjour à une personne étrangère qui n’en a pas."
+   },
+   {
+    "mot": "Carte de séjour de dix ans",
+    "def": "Titre de séjour valable dix ans."
+   }
+  ],
+  "note": "À sourcer : définitions (service-public.fr). Pas de chiffre dans la mesure : ne pas en indiquer."
+ }
+}
