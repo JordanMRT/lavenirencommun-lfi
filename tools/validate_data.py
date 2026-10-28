@@ -77,34 +77,36 @@ if a.prev:
     if total < on * 0.8: warn.append("baisse de plus de 20 % des mesures : extraction incomplète ?")
 
 if os.path.exists(a.exemples):
+    # Encarts : TOUT est tolérant (avertissements), sauf un JSON illisible, qui ferait échouer le fichier entier.
+    KNOWN = {"ref", "mesure", "etat", "clair", "termes", "chiffres", "cas", "src", "note", "relu"}
+    L = lambda x: [] if x in (None, "") else x if isinstance(x, list) else [x]
     try: ex = json.load(open(a.exemples, encoding="utf-8"))
-    except Exception as e: ex = {}; err.append(f"{a.exemples} illisible : {e}")
+    except Exception as e: ex = {}; err.append(f"{a.exemples} : JSON invalide, {e} (virgule oubliée ou en trop, guillemet droit dans un texte ?)")
     nrelu = nbro = norph = 0
     for k, e in ex.items():
+        if not isinstance(e, dict): err.append(f"encart {k} : doit être un bloc {{ … }}"); continue
         nom = f"encart {k} ({e.get('ref', '?')} « {str(e.get('mesure', ''))[:40]} »)"
         etat = e.get("etat")
-        if etat not in ("brouillon", "relu"): err.append(f"{nom} : etat doit être « brouillon » ou « relu » ({etat!r})"); continue
         if etat == "relu": nrelu += 1
-        else: nbro += 1
+        else:
+            nbro += 1
+            if etat != "brouillon": warn.append(f"{nom} : etat « {etat} » inconnu, traité comme brouillon (seul « relu » est affiché)")
         if k not in hashes:
-            norph += 1; warn.append(f"{nom} : orphelin, la mesure a changé ou n'existe plus (encart masqué dans l'app, à réécrire et relire)")
-        elif e.get("ref") and e["ref"] != hashes[k]: warn.append(f"{nom} : trouvé en {hashes[k]}, ref indiquée {e['ref']}")
-        if not str(e.get("clair", "")).strip(): err.append(f"{nom} : « clair » vide")
-        nums = [s_.get("n") for s_ in e.get("src", [])]
-        if len(nums) != len(set(nums)): err.append(f"{nom} : numéros de sources en double")
-        for s_ in e.get("src", []):
-            if not s_.get("n") or not s_.get("l"): err.append(f"{nom} : source sans n ou sans l")
-            if s_.get("u") and not str(s_["u"]).startswith("https://"): err.append(f"{nom} : lien source non https ({s_['u']})")
-        cites = [r for blk in e.get("termes", []) + e.get("chiffres", []) for r in blk.get("src", [])]
-        for r in cites:
-            if r not in nums: err.append(f"{nom} : renvoi [{r}] sans source correspondante")
-        for c_ in e.get("chiffres", []):
-            if not str(c_.get("t", "")).strip(): err.append(f"{nom} : chiffre vide")
-            if etat == "relu" and not c_.get("src"): err.append(f"{nom} : chiffre sans source (interdit pour un encart relu)")
-        if e.get("cas") is not None and not str(e["cas"].get("t", "")).strip(): err.append(f"{nom} : cas type vide")
-        if etat == "relu":
-            if not re.match(r"^\d{4}-\d{2}-\d{2}$", str(e.get("relu", ""))): err.append(f"{nom} : date de relecture manquante (AAAA-MM-JJ)")
-            if not e.get("src"): err.append(f"{nom} : encart relu sans aucune source")
+            norph += 1; warn.append(f"{nom} : orphelin, la mesure a changé ou n'existe plus (encart masqué dans l'app)")
+        for champ in e:
+            if champ not in KNOWN: warn.append(f"{nom} : champ inconnu « {champ} » (faute de frappe ?)")
+        if not any(e.get(c) for c in ("clair", "termes", "chiffres", "cas")):
+            warn.append(f"{nom} : aucun contenu (clair, termes, chiffres ou cas), il ne s'affichera pas")
+        srcs = [s_ for s_ in L(e.get("src")) if isinstance(s_, dict)]
+        nums = [s_.get("n") for s_ in srcs]
+        for s_ in srcs:
+            if s_.get("u") and not str(s_["u"]).startswith("https://"): warn.append(f"{nom} : lien source non https, affiché sans lien ({s_['u']})")
+        blocs = [x for c in ("termes", "chiffres", "cas") for x in L(e.get(c)) if isinstance(x, dict)]
+        for x in blocs:
+            for r in L(x.get("src")):
+                if r not in nums: warn.append(f"{nom} : renvoi [{r}] sans source correspondante")
+        if etat == "relu" and any(x.get("src") is None for x in blocs if x.get("t")) and not srcs:
+            warn.append(f"{nom} : encart relu avec chiffre ou cas, mais sans aucune source")
     print(f"Encarts : {nrelu} relus (affichés), {nbro} brouillons (aperçu seulement), {norph} orphelins")
 
 print(f"{len(chap_ids)} chapitres · {total} mesures ({keys} phares) · {len(meta.get('missing', []))} sections manquantes")

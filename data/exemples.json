@@ -3,84 +3,15 @@
   "ref": "8.4",
   "mesure": "Porter immédiatement le SMIC mensuel à 1600 euros net et indexer les salaires su",
   "etat": "brouillon",
-  "clair": "Le SMIC mensuel passerait immédiatement à 1 600 € nets (le texte écrit « 1600 euros net »). Les salaires seraient aussi indexés sur l’inflation, dans le privé comme dans la fonction publique.",
   "termes": [
    {
     "mot": "Indexer",
     "def": "Lier automatiquement l’évolution d’un montant à celle d’un indice, ici l’inflation (la hausse générale des prix)."
    }
   ],
-  "cas": {
-   "t": "Illustration avec un chiffre supposé : si le SMIC net était de 1 400 € par mois, passer à 1 600 € représenterait 200 € de plus par mois, soit 2 400 € sur l’année."
-  },
-  "note": "À sourcer : définition d’« indexer » ; SMIC net actuel (chiffre officiel) pour remplacer le chiffre supposé, ou garder l’illustration supposée."
- },
- "846cae85": {
-  "ref": "8.2",
-  "mesure": "Rétablir immédiatement la durée légale hebdomadaire à 35 heures (en majorant les",
-  "etat": "brouillon",
-  "clair": "La durée légale du travail serait rétablie à 35 heures par semaine, immédiatement. Les heures supplémentaires seraient majorées de 25 % pour les 4 premières et de 50 % au-delà (le texte ajoute « cotisations incluses »). La semaine passerait à 32 heures dans les métiers pénibles ou de nuit, et le texte propose de favoriser la généralisation des 32 heures par la négociation collective.",
-  "termes": [
+  "cas": [
    {
-    "mot": "Heures supplémentaires",
-    "def": "Heures travaillées au-delà de la durée légale du travail."
-   },
-   {
-    "mot": "Majorer",
-    "def": "Payer plus : ici, le taux horaire normal augmenté de 25 % ou de 50 %."
-   }
-  ],
-  "cas": {
-   "t": "Illustration avec un taux horaire supposé de 15 € : pour 6 heures supplémentaires dans la semaine, les 4 premières sont payées 15 × 1,25 = 18,75 € l’heure (75 €) et les 2 suivantes 15 × 1,50 = 22,50 € l’heure (45 €), soit 120 € pour ces 6 heures."
-  },
-  "note": "À valider avant relecture : sens exact de « cotisations incluses » (le cas type suppose une majoration simple du taux horaire) ; définitions à sourcer."
- },
- "98ea353d": {
-  "ref": "8.8",
-  "mesure": "Abroger la réforme d’Emmanuel Macron passant l’âge de départ à la retraite à 64 ",
-  "etat": "brouillon",
-  "clair": "La réforme qui a porté l’âge de départ à la retraite à 64 ans serait abrogée. Le droit de partir à la retraite à 60 ans à taux plein serait restauré, pour 40 annuités de cotisations.",
-  "termes": [
-   {
-    "mot": "Abroger",
-    "def": "Supprimer une loi ou une réforme existante."
-   },
-   {
-    "mot": "Taux plein",
-    "def": "Pension calculée sans réduction pour durée de cotisation insuffisante."
-   },
-   {
-    "mot": "Annuité",
-    "def": "Une année de cotisation (soit quatre trimestres)."
-   }
-  ],
-  "note": "À sourcer : définitions de « taux plein » et d’« annuité » (source officielle type service-public.fr / assurance retraite). Pas de chiffre de coût dans la mesure."
- },
- "4217b9c7": {
-  "ref": "7.4",
-  "mesure": "Créer une garantie d’autonomie qui permettra que nul ne soit privé de sa dignité",
-  "etat": "brouillon",
-  "clair": "Une garantie d’autonomie serait créée pour que le revenu mensuel de chaque personne atteigne le seuil de pauvreté, que le texte chiffre à 1 216 euros pour une personne seule.",
-  "termes": [
-   {
-    "mot": "Seuil de pauvreté",
-    "def": "Niveau de revenu en dessous duquel une personne est considérée comme pauvre ; ici, le texte donne 1 216 euros pour une personne seule."
-   }
-  ],
-  "cas": {
-   "t": "Illustration avec un revenu supposé : pour une personne seule dont le revenu mensuel serait de 900 €, l’écart avec 1 216 € est de 316 € par mois."
-  },
-  "note": "À sourcer : définition du seuil de pauvreté (Insee) et date du chiffre de 1 216 €. Ne pas décrire le mécanisme de versement : le texte ne le précise pas."
- },
- "b31184bd": {
-  "ref": "9.1",
-  "mesure": "Bloquer les prix des produits de première nécessité (alimentation, énergie, carb",
-  "etat": "brouillon",
-  "clair": "Les prix des produits de première nécessité (alimentation, énergie, carburant) seraient bloqués, et la « réduflation » serait interdite.",
-  "termes": [
-   {
-    "mot": "Réduflation",
-    "def": "Réduction des quantités pour le même prix (c’est la formule utilisée par le programme lui-même, section 7.4).",
+    "t": "Illustration avec un chiffre : le SMIC net au 1er juin 2026 est de 1 477,93 € par mois ; passer à 1 600 € représenterait 122,07 € de plus par mois, soit 1 464,84 € sur l’année.",
     "src": [
      1
     ]
@@ -89,83 +20,265 @@
   "src": [
    {
     "n": 1,
-    "l": "L’Avenir en commun, section 7.4 (« interdire la réduflation (réduction des quantités pour le même prix) »)"
+    "l": "Service-public.fr, SMIC au 1er juin 2026",
+    "u": "https://www.service-public.gouv.fr/particuliers/actualites/A18916"
    }
   ],
-  "note": "La définition vient du programme (7.4) : à relire dans la source. Rien sur la durée du blocage : ne pas préciser."
+  "note": "À sourcer : définition d’« indexer » (non sourcée pour l’instant)."
+ },
+ "846cae85": {
+  "ref": "8.2",
+  "mesure": "Rétablir immédiatement la durée légale hebdomadaire à 35 heures (en majorant les",
+  "etat": "brouillon",
+  "termes": [
+   {
+    "mot": "Durée légale du travail",
+    "def": "Durée de référence fixée par la loi : 35 heures par semaine pour les salariés à temps complet.",
+    "src": [
+     1
+    ]
+   },
+   {
+    "mot": "Heures supplémentaires",
+    "def": "Heures effectuées au-delà de la durée légale. Elles ouvrent droit à une majoration de salaire ou, sous certaines conditions, à un repos compensateur.",
+    "src": [
+     1
+    ]
+   }
+  ],
+  "src": [
+   {
+    "n": 1,
+    "l": "Ministère du Travail (Code du travail numérique), « Les heures supplémentaires : définition et limites » (mis à jour le 17/09/2025)",
+    "u": "https://code.travail.gouv.fr/fiche-ministere-travail/les-heures-supplementaires-definition-et-limites"
+   }
+  ],
+  "note": "Pas de cas type : le sens de « cotisations incluses » dans la mesure n’est pas clair (à vérifier dans le programme) ; ne pas comparer avec la majoration actuelle."
+ },
+ "98ea353d": {
+  "ref": "8.8",
+  "mesure": "Abroger la réforme d’Emmanuel Macron passant l’âge de départ à la retraite à 64 ",
+  "etat": "brouillon",
+  "termes": [
+   {
+    "mot": "Taux plein",
+    "def": "Retraite accordée sans décote, c’est-à-dire sans réduction de son montant liée à un nombre de trimestres d’assurance retraite manquants.",
+    "src": [
+     1
+    ]
+   }
+  ],
+  "src": [
+   {
+    "n": 1,
+    "l": "Service-public.fr (DILA), « Retraite de base d’un salarié : quelle différence entre taux plein et taux maximum ? », reprise sur Justice.fr",
+    "u": "https://www.justice.fr/fiche/retraite-base-salarie-difference-entre-taux-plein-taux-maximum"
+   }
+  ],
+  "note": "« Annuités » : aucune définition officielle trouvée, mot non défini. Pas de chiffre : l’âge légal a évolué (suspension de la réforme fin 2025) et la mesure n’en donne pas."
+ },
+ "4217b9c7": {
+  "ref": "7.4",
+  "mesure": "Créer une garantie d’autonomie qui permettra que nul ne soit privé de sa dignité",
+  "etat": "brouillon",
+  "termes": [
+   {
+    "mot": "Seuil de pauvreté",
+    "def": "Niveau de vie en dessous duquel une personne est considérée comme pauvre. Le seuil à 60 % du niveau de vie médian est celui privilégié en Europe.",
+    "src": [
+     2
+    ]
+   }
+  ],
+  "chiffres": [
+   {
+    "t": "Seuil de pauvreté monétaire calculé par l’Insee sur les revenus de 2022 : 1 216 euros par mois pour une personne seule (le montant repris dans la mesure).",
+    "src": [
+     1
+    ]
+   }
+  ],
+  "cas": "Illustration avec un revenu supposé : pour une personne seule dont le revenu mensuel serait de 900 €, l’écart avec 1 216 € est de 316 € par mois.",
+  "src": [
+   {
+    "n": 1,
+    "l": "Insee, « Niveau de vie et pauvreté en 2022 », Insee Première n° 2004 (juillet 2024)",
+    "u": "https://www.insee.fr/fr/statistiques/8216285"
+   },
+   {
+    "n": 2,
+    "l": "Insee, communiqué « Synthèse économique 2019 » (définition de la pauvreté monétaire)",
+    "u": "https://www.insee.fr/fr/statistiques/fichier/6532177/CP_synthese_economique_2019.pdf"
+   }
+  ],
+  "note": "Vérifier sur insee.fr s’il existe un seuil plus récent que celui de 2022 (des sites citent 1 288 €, non vérifié) ; l’encart reste exact car le chiffre est daté de 2022. Ne pas décrire le mécanisme de versement."
+ },
+ "b31184bd": {
+  "ref": "9.1",
+  "mesure": "Bloquer les prix des produits de première nécessité (alimentation, énergie, carb",
+  "etat": "brouillon",
+  "termes": [
+   {
+    "mot": "Réduflation",
+    "def": "Pratique qui consiste à réduire le poids ou le volume d’un produit en maintenant son prix, ce qui fait augmenter le prix au kilo ou au litre. Le mot associe « réduction » et « inflation ».",
+    "src": [
+     1,
+     2
+    ]
+   }
+  ],
+  "src": [
+   {
+    "n": 1,
+    "l": "Economie.gouv.fr, « Affichage des prix : quelles sont les règles générales ? » (écrit le 20/01/2026)",
+    "u": "https://www.economie.gouv.fr/entreprises/gerer-son-entreprise-au-quotidien/gerer-un-commerce/professionnels-quelles-sont-vos-obligations-en-matiere-daffichage-des-prix"
+   },
+   {
+    "n": 2,
+    "l": "Assemblée nationale, réponse ministérielle à la question écrite n° 1720 (16e législature) sur la « shrinkflation »",
+    "u": "https://www.assemblee-nationale.fr/dyn/16/questions/QANR5L16QE1720.pdf"
+   }
+  ],
+  "note": "Rien sur la durée du blocage ni sur la liste précise des produits : ne pas préciser."
  },
  "5d6479f8": {
   "ref": "6.5",
   "mesure": "Rendre l’impôt sur le revenu plus progressif avec un barème à 14 tranches contre",
   "etat": "brouillon",
-  "clair": "L’impôt sur le revenu deviendrait plus progressif : le barème passerait de 5 tranches à 14 tranches.",
   "termes": [
    {
     "mot": "Barème progressif",
-    "def": "Système où le taux d’imposition augmente avec le revenu, par paliers."
+    "def": "Le barème de l’impôt sur le revenu est progressif : il comporte plusieurs tranches de revenu, qui correspondent chacune à un taux d’imposition différent.",
+    "src": [
+     1
+    ]
    },
    {
     "mot": "Tranche",
-    "def": "Partie du revenu soumise à un même taux d’imposition."
+    "def": "Fraction du revenu à laquelle s’applique un même taux d’imposition. Chaque part du revenu bénéficie des taux réduits des premières tranches du barème.",
+    "src": [
+     1,
+     2
+    ]
    }
   ],
-  "note": "Pas de seuils ni de taux dans la mesure : pas de cas type possible sans inventer. À sourcer : définitions (impots.gouv.fr)."
+  "src": [
+   {
+    "n": 1,
+    "l": "Service-public.fr, fiche F1419 sur le barème de l’impôt sur le revenu (à vérifier : titre exact)",
+    "u": "https://www.service-public.fr/particuliers/vosdroits/F1419"
+   },
+   {
+    "n": 2,
+    "l": "BOFiP-Impôts, « IR – Liquidation – Détermination de l’impôt brut » (version du 18/02/2019)",
+    "u": "https://bofip.impots.gouv.fr/node/4232"
+   }
+  ],
+  "note": "Pas de seuils ni de taux dans la mesure : pas de cas type. Les sources trouvées pour les barèmes chiffrés sont privées : ne pas ajouter de chiffres sans page impots.gouv.fr."
  },
  "5f280e90": {
   "ref": "6.5",
   "mesure": "Rétablir et renforcer l’impôt de solidarité sur la fortune (ISF), incluant un vo",
   "etat": "brouillon",
-  "clair": "L’impôt de solidarité sur la fortune (ISF) serait rétabli et renforcé, avec un volet climatique destiné à taxer les gros pollueurs.",
-  "note": "À sourcer avant d’ajouter un mot à connaître : définition de l’ISF et de ce qui le remplace aujourd’hui (source officielle). Ne pas détailler le « volet climatique » : le texte ne le décrit pas."
+  "termes": [
+   {
+    "mot": "ISF",
+    "def": "Impôt de solidarité sur la fortune. Il a été remplacé le 1er janvier 2018 par l’impôt sur la fortune immobilière (IFI).",
+    "src": [
+     1
+    ]
+   },
+   {
+    "mot": "IFI",
+    "def": "Impôt sur la fortune immobilière : il concerne les personnes qui détiennent un patrimoine immobilier net taxable supérieur à 1,3 million d’euros.",
+    "src": [
+     1,
+     2
+    ]
+   }
+  ],
+  "src": [
+   {
+    "n": 1,
+    "l": "Impots.gouv.fr, « Je déclare mon impôt sur la fortune immobilière »",
+    "u": "https://www.impots.gouv.fr/particulier/je-declare-mon-impot-sur-la-fortune"
+   },
+   {
+    "n": 2,
+    "l": "Economie.gouv.fr, « Comment fonctionne l’impôt sur la fortune immobilière (IFI) ? »",
+    "u": "https://www.economie.gouv.fr/particuliers/impot-fortune-immobiliere-IFI"
+   }
+  ]
  },
  "c93abcf0": {
   "ref": "6.5",
   "mesure": "Augmenter les droits de succession sur les plus hauts patrimoines en comptabilis",
   "etat": "brouillon",
-  "clair": "Les droits de succession augmenteraient sur les plus hauts patrimoines, en comptant l’ensemble des dons et héritages reçus tout au long de la vie. Un héritage maximal de 12 millions d’euros serait créé, que le texte présente comme 100 fois le patrimoine net médian.",
   "termes": [
    {
     "mot": "Patrimoine net médian",
-    "def": "Valeur de patrimoine (après déduction des dettes) qui partage les ménages en deux moitiés : la moitié en dessous, la moitié au-dessus."
+    "def": "Montant de patrimoine, une fois déduits les emprunts en cours, qui partage les ménages en deux : la moitié en possède davantage, l’autre moitié moins.",
+    "src": [
+     1
+    ]
    }
   ],
-  "note": "À sourcer : définition ; valeur du patrimoine net médian (Insee) pour vérifier le « 100 fois ». Ne pas préciser ce que l’« héritage maximal » implique (plafond, taxation au-delà) : le texte ne le dit pas."
+  "chiffres": [
+   {
+    "t": "Patrimoine net médian des ménages selon l’Insee : 117 000 euros début 2018 [1] ; 125 700 euros en 2020-2021 (enquête européenne HFCS, pour la France) [2].",
+    "src": [
+     1,
+     2
+    ]
+   }
+  ],
+  "cas": "Illustration : 12 millions d’euros divisés par 125 700 euros font environ 95 fois le patrimoine net médian de 2020-2021 ; divisés par 117 000 euros (début 2018), environ 103 fois.",
+  "src": [
+   {
+    "n": 1,
+    "l": "Insee, « Patrimoine net des ménages » (Les revenus et le patrimoine des ménages, mai 2021)",
+    "u": "https://www.insee.fr/fr/statistiques/5371259"
+   },
+   {
+    "n": 2,
+    "l": "Insee, « Inégalités de patrimoine net dans la zone euro, données annuelles 2020-2021 »",
+    "u": "https://www.insee.fr/fr/statistiques/5210179"
+   }
+  ],
+  "note": "Le programme dit « 100 fois » : le rapport dépend de l’année Insee retenue (cf. cas type). Ne pas préciser ce que « héritage maximal » implique (plafond, taxation au-delà) : le texte ne le dit pas. Une valeur plus récente (enquête 2023-2024) existe peut-être sur insee.fr."
  },
  "2c755717": {
   "ref": "6.5",
   "mesure": "Réduire la TVA sur les produits de première nécessité et réinstaurer une « TVA g",
   "etat": "brouillon",
-  "clair": "La TVA serait réduite sur les produits de première nécessité, et une « TVA grand luxe » serait réinstaurée pour financer cette baisse.",
   "termes": [
    {
     "mot": "TVA",
-    "def": "Taxe sur la valeur ajoutée : taxe incluse dans le prix de la plupart des achats."
+    "def": "Taxe sur la valeur ajoutée : impôt sur la consommation. C’est un impôt indirect, c’est-à-dire qu’il n’est pas collecté directement par l’État mais par le vendeur, qui le reverse à l’État.",
+    "src": [
+     1
+    ]
    }
   ],
-  "note": "À sourcer : définition de la TVA. Pas de taux dans la mesure : ne pas en inventer."
+  "src": [
+   {
+    "n": 1,
+    "l": "Economie.gouv.fr (Faciléco), « Tout savoir sur la TVA »",
+    "u": "https://www.economie.gouv.fr/node/31693"
+   }
+  ],
+  "note": "Pas de taux dans la mesure : ne pas en indiquer. Aucune définition officielle de « TVA grand luxe » trouvée."
  },
  "6f4f22fd": {
   "ref": "6.3",
   "mesure": "Interdire les licenciements boursiers et économiques par les entreprises qui ver",
   "etat": "brouillon",
-  "clair": "Les entreprises qui versent des dividendes, ou qui bénéficient des aides de l’État, n’auraient plus le droit de procéder à des licenciements boursiers ni à des licenciements économiques.",
-  "termes": [
-   {
-    "mot": "Dividendes",
-    "def": "Part des bénéfices d’une entreprise versée à ses actionnaires."
-   },
-   {
-    "mot": "Licenciement boursier",
-    "def": "Terme du programme pour un licenciement lié à la rentabilité financière plutôt qu’à des difficultés de l’entreprise."
-   }
-  ],
-  "note": "À sourcer : « licenciement boursier » n’a pas de définition juridique à ma connaissance ; vérifier s’il existe une définition officielle ou dans le programme, sinon retirer ce mot."
+  "note": "Définitions non sourcées retirées. « Licenciement boursier » n’est pas un terme juridique ; le rapport du Sénat n° 345 (2011), https://www.senat.fr/rap/l11-345/l11-3451.pdf, propose une définition (je n’ai pu en lire que des extraits) : à lire avant de rédiger. « Dividendes » : source officielle à trouver."
  },
  "2d0ecc4e": {
   "ref": "6.4",
   "mesure": "Exiger de l’Union européenne que la Banque centrale européenne (BCE) transforme ",
   "etat": "brouillon",
-  "clair": "Le programme demande à l’Union européenne que la Banque centrale européenne (BCE) transforme la part de la dette des États qu’elle détient en dettes perpétuelles à taux nul.",
   "termes": [
    {
     "mot": "Dette perpétuelle",
@@ -182,7 +295,6 @@
   "ref": "6.4",
   "mesure": "Réaliser un audit citoyen de la dette publique pour déterminer la part illégitim",
   "etat": "brouillon",
-  "clair": "Un audit citoyen de la dette publique serait réalisé pour déterminer la part de cette dette qui serait illégitime, afin de préparer un réaménagement négocié de la dette publique.",
   "termes": [
    {
     "mot": "Audit",
@@ -199,7 +311,6 @@
   "ref": "17.2",
   "mesure": "Réaffirmer la supériorité des principes fondamentaux inscrits dans la Constituti",
   "etat": "brouillon",
-  "clair": "La Constitution de la 6e République aurait la supériorité, pour ses principes fondamentaux, sur le droit européen. Un principe de non-régression écologique et sociale serait instauré : selon le texte, aucune norme européenne ne peut s’appliquer si elle est moins ambitieuse qu’une norme nationale sur le plan social ou écologique.",
   "termes": [
    {
     "mot": "Non-régression",
@@ -212,7 +323,6 @@
   "ref": "16.1",
   "mesure": "Se retirer immédiatement du commandement intégré de l’OTAN puis, par étapes, de ",
   "etat": "brouillon",
-  "clair": "La France quitterait immédiatement le commandement intégré de l’OTAN, puis sortirait, par étapes, de l’organisation elle-même.",
   "termes": [
    {
     "mot": "OTAN",
@@ -229,7 +339,6 @@
   "ref": "1.1",
   "mesure": "Convoquer une Constituante pour passer à la 6e République",
   "etat": "brouillon",
-  "clair": "Une Constituante serait convoquée pour passer à la 6e République. Les mesures suivantes de la même section précisent le processus : un référendum (article 11) pour l’engager, aucun parlementaire des anciennes assemblées dans la Constituante, et un référendum sur le projet de Constitution après deux ans de travaux.",
   "termes": [
    {
     "mot": "Constituante",
@@ -248,7 +357,6 @@
   "ref": "1.4",
   "mesure": "Instaurer le Référendum d’initiative citoyenne (RIC), par lequel les citoyens qu",
   "etat": "brouillon",
-  "clair": "Le Référendum d’initiative citoyenne (RIC) permettrait aux citoyens qui réunissent suffisamment de signatures de révoquer des élus, de proposer ou d’abroger une loi et de modifier la Constitution.",
   "termes": [
    {
     "mot": "Révoquer",
@@ -265,7 +373,6 @@
   "ref": "13.3",
   "mesure": "Sortir du nucléaire : abandonner les projets d’EPR (European Pressurized Reactor",
   "etat": "brouillon",
-  "clair": "La France sortirait du nucléaire : les projets d’EPR seraient abandonnés, et le démantèlement, la réhabilitation et la reconversion des sites nucléaires et de l’ensemble de leur bassin de vie seraient planifiés.",
   "termes": [
    {
     "mot": "EPR",
@@ -282,14 +389,41 @@
   "ref": "7.5",
   "mesure": "Encadrer les loyers partout sur le territoire et à la baisse dans les grandes vi",
   "etat": "brouillon",
-  "clair": "Les loyers seraient encadrés partout sur le territoire, et à la baisse dans les grandes villes.",
-  "note": "Pas de chiffre dans la mesure. À sourcer avant toute précision : ce que recouvre « encadrer » dans le droit actuel."
+  "termes": [
+   {
+    "mot": "Encadrement des loyers",
+    "def": "Politique publique qui vise à modérer l’augmentation des loyers dans les zones où une tension locative est constatée.",
+    "src": [
+     1
+    ]
+   },
+   {
+    "mot": "Loyer de référence",
+    "def": "Dans les villes qui appliquent l’encadrement du niveau des loyers, loyer médian par mètre carré fixé chaque année par arrêté du préfet. Le préfet fixe aussi un loyer de référence majoré (+ 20 %) et un loyer de référence minoré (− 30 %).",
+    "src": [
+     1,
+     2
+    ]
+   }
+  ],
+  "src": [
+   {
+    "n": 1,
+    "l": "Ministère de la Transition écologique, « Encadrement des loyers »",
+    "u": "https://www.ecologie.gouv.fr/encadrement-des-loyers"
+   },
+   {
+    "n": 2,
+    "l": "Economie.gouv.fr, « Location en zone tendue et encadrement des loyers : ce qu’il faut savoir »",
+    "u": "https://www.economie.gouv.fr/location-en-zone-tendue-et-encadrement-des-loyers-ce-quil-faut-savoir"
+   }
+  ],
+  "note": "Le second mot décrit le droit actuel (vocabulaire) : à retirer si tu juges que ça va trop loin. Pas de chiffre dans la mesure."
  },
  "b2ac10c9": {
   "ref": "10.2",
   "mesure": "Garantir le droit du sol intégral à tous les enfants nés en France, le rétablir ",
   "etat": "brouillon",
-  "clair": "Tous les enfants nés en France se verraient garantir le droit du sol intégral, rétabli sur l’ensemble du territoire national, et l’accès à la nationalité française serait facilité.",
   "termes": [
    {
     "mot": "Droit du sol",
@@ -302,7 +436,6 @@
   "ref": "16.7",
   "mesure": "Faciliter l’accès aux visas, régulariser les travailleurs, étudiants, parents d’",
   "etat": "brouillon",
-  "clair": "Le programme prévoit de faciliter l’accès aux visas, de régulariser les travailleurs, les étudiants et les parents d’enfants scolarisés, et d’instituer la carte de séjour de dix ans comme titre de séjour de référence.",
   "termes": [
    {
     "mot": "Régulariser",

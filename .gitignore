@@ -2,3 +2,4 @@
 .venv/
 pages_manquantes/
 __pycache__/
+*.bak
