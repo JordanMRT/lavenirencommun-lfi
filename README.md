@@ -11,6 +11,8 @@ Site statique (HTML/CSS/JS, sans build) : recherche instantanée + navigation pa
 `python3 tools/build_data.py <pages_parties_chapitres> <pages_sections> data/programme.json`
 (édition 2027 : adapter `PARTS` et `EDITION` en tête du script ; si le HTML change, ajuster les sélecteurs). Penser à incrémenter `V` dans `sw.js` pour forcer le rafraîchissement du cache.
 
+Préparer une nouvelle édition : suivre `tools/MISE_A_JOUR_2027.md` (checklist) ; `python3 tools/diff_editions.py ancien.json nouveau.json` compare deux éditions (mesures identiques, modifiées, supprimées, nouvelles, correspondance des chapitres, verdict par encart).
+
 Après un build : `python3 tools/validate_data.py` (ajouter `--expect N --prev ancien.json` pour comparer les volumes). Les sections manquantes peuvent être fusionnées ensuite avec `tools/fetch_missing.sh` puis `tools/merge_missing.py` (nécessite `beautifulsoup4` et `lxml`, dans un environnement virtuel ignoré par Git).
 
 ## Encarts « Comprendre cette mesure » (`data/exemples.json`)
