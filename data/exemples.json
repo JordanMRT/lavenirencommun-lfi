@@ -2,7 +2,7 @@
  "1cb801e6": {
   "ref": "8.4",
   "mesure": "Porter immédiatement le SMIC mensuel à 1600 euros net et indexer les salaires su",
-  "etat": "brouillon",
+  "etat": "relu",
   "termes": [
    {
     "mot": "Indexer",
@@ -23,13 +23,12 @@
     "l": "Service-public.fr, SMIC au 1er juin 2026",
     "u": "https://www.service-public.gouv.fr/particuliers/actualites/A18916"
    }
-  ],
-  "note": "À sourcer : définition d’« indexer » (non sourcée pour l’instant)."
+  ]
  },
  "846cae85": {
   "ref": "8.2",
   "mesure": "Rétablir immédiatement la durée légale hebdomadaire à 35 heures (en majorant les",
-  "etat": "brouillon",
+  "etat": "relu",
   "termes": [
    {
     "mot": "Durée légale du travail",
@@ -58,7 +57,7 @@
  "98ea353d": {
   "ref": "8.8",
   "mesure": "Abroger la réforme d’Emmanuel Macron passant l’âge de départ à la retraite à 64 ",
-  "etat": "brouillon",
+  "etat": "relu",
   "termes": [
    {
     "mot": "Taux plein",
@@ -86,29 +85,29 @@
     "mot": "Seuil de pauvreté",
     "def": "Niveau de vie en dessous duquel une personne est considérée comme pauvre. Le seuil à 60 % du niveau de vie médian est celui privilégié en Europe.",
     "src": [
-     2
+     1
     ]
    }
   ],
   "chiffres": [
    {
-    "t": "Seuil de pauvreté monétaire calculé par l’Insee sur les revenus de 2022 : 1 216 euros par mois pour une personne seule (le montant repris dans la mesure).",
+    "t": "Seuil de pauvreté monétaire calculé par l’Insee sur les revenus de 2024 : 1 337 euros par mois pour une personne seule.",
     "src": [
-     1
+     2
     ]
    }
   ],
   "cas": "Illustration avec un revenu supposé : pour une personne seule dont le revenu mensuel serait de 900 €, l’écart avec 1 216 € est de 316 € par mois.",
   "src": [
-   {
+       {
     "n": 1,
-    "l": "Insee, « Niveau de vie et pauvreté en 2022 », Insee Première n° 2004 (juillet 2024)",
-    "u": "https://www.insee.fr/fr/statistiques/8216285"
+    "l": "Insee, communiqué « Synthèse économique 2019 » (définition de la pauvreté monétaire)",
+    "u": "https://www.insee.fr/fr/statistiques/fichier/6532177/CP_synthese_economique_2019.pdf"
    },
    {
     "n": 2,
-    "l": "Insee, communiqué « Synthèse économique 2019 » (définition de la pauvreté monétaire)",
-    "u": "https://www.insee.fr/fr/statistiques/fichier/6532177/CP_synthese_economique_2019.pdf"
+    "l": "Insee, « Niveau de vie et pauvreté en 2024 », Insee Première n° 2117 (juillet 2026)",
+    "u": "https://www.insee.fr/fr/statistiques/9019316"
    }
   ],
   "note": "Vérifier sur insee.fr s’il existe un seuil plus récent que celui de 2022 (des sites citent 1 288 €, non vérifié) ; l’encart reste exact car le chiffre est daté de 2022. Ne pas décrire le mécanisme de versement."
@@ -116,7 +115,7 @@
  "b31184bd": {
   "ref": "9.1",
   "mesure": "Bloquer les prix des produits de première nécessité (alimentation, énergie, carb",
-  "etat": "brouillon",
+  "etat": "relu",
   "termes": [
    {
     "mot": "Réduflation",
@@ -136,7 +135,7 @@
    {
     "n": 2,
     "l": "Assemblée nationale, réponse ministérielle à la question écrite n° 1720 (16e législature) sur la « shrinkflation »",
-    "u": "https://www.assemblee-nationale.fr/dyn/16/questions/QANR5L16QE1720.pdf"
+    "u": "https://www.assemblee-nationale.fr/dyn/16/questions/QANR5L16QE1720"
    }
   ],
   "note": "Rien sur la durée du blocage ni sur la liste précise des produits : ne pas préciser."
@@ -144,7 +143,7 @@
  "5d6479f8": {
   "ref": "6.5",
   "mesure": "Rendre l’impôt sur le revenu plus progressif avec un barème à 14 tranches contre",
-  "etat": "brouillon",
+  "etat": "relu",
   "termes": [
    {
     "mot": "Barème progressif",
@@ -165,7 +164,7 @@
   "src": [
    {
     "n": 1,
-    "l": "Service-public.fr, fiche F1419 sur le barème de l’impôt sur le revenu (à vérifier : titre exact)",
+    "l": "Service-public.fr, Quel est le barème de l'impôt sur le revenu ? (version du 15 avril 2026)",
     "u": "https://www.service-public.fr/particuliers/vosdroits/F1419"
    },
    {
@@ -179,7 +178,7 @@
  "5f280e90": {
   "ref": "6.5",
   "mesure": "Rétablir et renforcer l’impôt de solidarité sur la fortune (ISF), incluant un vo",
-  "etat": "brouillon",
+  "etat": "relu",
   "termes": [
    {
     "mot": "ISF",
@@ -213,7 +212,7 @@
  "c93abcf0": {
   "ref": "6.5",
   "mesure": "Augmenter les droits de succession sur les plus hauts patrimoines en comptabilis",
-  "etat": "brouillon",
+  "etat": "relu",
   "termes": [
    {
     "mot": "Patrimoine net médian",
@@ -232,7 +231,7 @@
     ]
    }
   ],
-  "cas": "Illustration : 12 millions d’euros divisés par 125 700 euros font environ 95 fois le patrimoine net médian de 2020-2021 ; divisés par 117 000 euros (début 2018), environ 103 fois.",
+  "cas": "Illustration : 12 millions d’euros divisés par 125 700 euros font environ 95 fois le patrimoine net médian de 2020-2021 (divisés par 117 000 euros (début 2018), environ 103 fois).",
   "src": [
    {
     "n": 1,
@@ -250,7 +249,7 @@
  "2c755717": {
   "ref": "6.5",
   "mesure": "Réduire la TVA sur les produits de première nécessité et réinstaurer une « TVA g",
-  "etat": "brouillon",
+  "etat": "relu",
   "termes": [
    {
     "mot": "TVA",
@@ -272,12 +271,27 @@
  "6f4f22fd": {
   "ref": "6.3",
   "mesure": "Interdire les licenciements boursiers et économiques par les entreprises qui ver",
-  "etat": "brouillon",
-  "note": "Définitions non sourcées retirées. « Licenciement boursier » n’est pas un terme juridique ; le rapport du Sénat n° 345 (2011), https://www.senat.fr/rap/l11-345/l11-3451.pdf, propose une définition (je n’ai pu en lire que des extraits) : à lire avant de rédiger. « Dividendes » : source officielle à trouver."
+  "etat": "relu",
+  "termes": [
+    {
+        "mot": "Licenciement boursier",
+        "def": "« On peut définir un licenciement boursier comme une réduction d’effectifs subordonnée à une logique financière, étrangère à toute nécessité économique ou industrielle. »",
+    "src": [
+     1
+    ]
+   }
+  ],
+  "src": [
+   {
+    "n": 1,
+    "l": "Rapport du Sénat n° 345 (2011)",
+    "u": "https://www.senat.fr/rap/l11-345/l11-3451.pdf"
+   }
+]
  },
  "2d0ecc4e": {
   "ref": "6.4",
-  "mesure": "Exiger de l’Union européenne que la Banque centrale européenne (BCE) transforme ",
+  "mesure": "Exiger de l’Union européenne que la Banque Centrale Européenne (BCE) transforme ",
   "etat": "brouillon",
   "termes": [
    {
