@@ -77,7 +77,7 @@ Si un chapitre est renuméroté, ajouté ou supprimé : adapter `PAL` et `MOTIF`
 - `README.md` : mentions de 2025 si nécessaire.
 
 ### 9. Cache
-Dans `sw.js`, incrémenter `V` (actuellement `programme-v16`, donc `programme-v17` ou plus). Ne jamais le baisser, même pour un retour arrière.
+Dans `sw.js`, incrémenter `V` (actuellement `programme-v18`, donc `programme-v19` ou plus). Ne jamais le baisser, même pour un retour arrière.
 
 ### 10. Tester en local
 ```bash
