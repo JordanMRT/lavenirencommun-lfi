@@ -13,6 +13,7 @@ Principe : on prépare tout hors ligne, on valide, et on ne touche à `main` (do
 | Sources qui disparaissent | Les pages web 2025 ne sont déjà plus en ligne (redirigées vers l'accueil) | Étape 1 : archiver avant tout |
 | Texte périmé dans le pied de page | « Prochaine mise à jour : le 6 novembre 2026 » est écrit en dur dans `foot()` (`index.html`) | Étape 8 |
 | Liens profonds | `#/c/N/sM` repose sur la numérotation | Acceptable ; à connaître |
+| Balises de suivi perdues | Google Tag (GA4) et vérification Search Console sont dans le `<head>` de `index.html` ; l'étiquette `edition-2025` date d'avant leur ajout | Ne jamais restaurer `index.html` depuis l'étiquette ; contrôle à l'étape 10 |
 
 ## Avant le jour J (une seule fois)
 
@@ -76,13 +77,14 @@ Si un chapitre est renuméroté, ajouté ou supprimé : adapter `PAL` et `MOTIF`
 - `README.md` : mentions de 2025 si nécessaire.
 
 ### 9. Cache
-Dans `sw.js`, incrémenter `V` (actuellement `programme-v14`, donc `programme-v15` ou plus). Ne jamais le baisser, même pour un retour arrière.
+Dans `sw.js`, incrémenter `V` (actuellement `programme-v16`, donc `programme-v17` ou plus). Ne jamais le baisser, même pour un retour arrière.
 
 ### 10. Tester en local
 ```bash
 cp /tmp/programme-2027.json data/programme.json
 python3 tools/validate_data.py
 python3 -m http.server 8000
+grep -n "G-RYTGZEYJ04\|google-site-verification" index.html   # les trois lignes doivent être présentes
 ```
 Ouvrir `http://localhost:8000` : recherche, chaque chapitre, quelques sections, les encarts, `#/c/N/sM`, le pied de page. Le test hors ligne se fait sur l'ordinateur (Safari, onglet Réseau) ou après la mise en ligne.
 
@@ -100,6 +102,7 @@ Sur l'iPhone : ouvrir l'app en ligne, la fermer complètement et la rouvrir. Con
 
 ## Retour arrière
 ```bash
-git revert <commit_de_l_import>      # ou : git checkout edition-2025 -- data index.html sw.js
+git revert <commit_de_l_import>      # ou : git checkout edition-2025 -- data
 ```
+Attention : ne pas restaurer `index.html` depuis l'étiquette (il perdrait les balises GA4 et Search Console) ; si `index.html` doit revenir en arrière, utiliser `git revert`.
 Dans les deux cas, **incrémenter `V`** dans `sw.js` avant l'envoi pour que les appareils reprennent l'état restauré.
