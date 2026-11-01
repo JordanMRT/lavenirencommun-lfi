@@ -216,6 +216,96 @@ main{
   }
 }
 
+.pl{
+  margin:46px 0 6px;
+  border-top:2px solid var(--violet)
+}
+
+.pl>summary,.pl[open]>summary{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:18px 0;
+  background:none;
+  color:var(--ink)
+}
+
+.pl>summary:focus-visible{
+  outline:3px solid var(--mk);
+  outline-offset:3px
+}
+
+.pl-h{
+  display:block;
+  font-size:clamp(26px,8vw,44px)
+}
+
+.pl-n{
+  display:block;
+  margin-top:8px;
+  color:var(--mut)
+}
+
+.pl-t{
+  flex:none;
+  display:grid;
+  place-items:center;
+  width:36px;
+  height:36px;
+  background:var(--violet);
+  color:#fff;
+  font:700 22px/1 "Public Sans",system-ui,sans-serif
+}
+
+.pl-t::before{
+  content:"+"
+}
+
+.pl[open] .pl-t::before{
+  content:"\2212"
+}
+
+.pl-b{
+  padding:0 0 4px
+}
+
+.pl-b p{
+  margin:0 0 18px;
+  color:var(--mut);
+  font-size:15px;
+  line-height:1.45
+}
+
+.pl-a{
+  display:block;
+  color:inherit;
+  text-decoration:none
+}
+
+.pl-a img{
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:1/1.414;
+  object-fit:cover;
+  background:#3A3075;
+  box-shadow:0px 0px 5px 1px #1d124550;
+  transition:transform .15s
+}
+
+.pl-a:active img{
+  transform:scale(.97) rotate(-.6deg)
+}
+
+.pl-c{
+  display:block;
+  margin-top:7px;
+  font-size:10px;
+  line-height:1.4;
+  color:var(--mut)
+}
+
 .cv{
   position:relative;
   display:flex;
@@ -741,7 +831,15 @@ return`<details class="ex"><summary>Comprendre cette mesure</summary><div class=
 function mesure(m,c,s,alts){const h=x=>alts?hl(x,alts.flat()):esc(x);return`<li class="m${m.k?" k":""}">${m.k?'<span class="badge">★ Mesure phare</span><br>':""}${h(m.t)}${m.sub?`<ul>${m.sub.map(x=>`<li>${h(x)}</li>`).join("")}</ul>`:""}${ex(m)}<button class="cp" data-c="${c.n}" data-s="${s.n}" data-t="${esc(m.t+(m.sub?"\n"+m.sub.map(x=>"– "+x).join("\n"):""))}" aria-label="Copier">⧉</button></li>`}
 const url=(c,s)=>`${D.meta.base}/chapitre${c}/s${s}`;
 function cover(c,big){const k=c.sections.reduce((a,s)=>a+s.items.length,0),t=big?"div":"a";return`<${t} class="cv${big?" big":""}" style="${vars(c.n)}"${big?"":` href="#/c/${c.n}"`}>${art(c.n)}<span class="mono sub">${big?esc(D.parts.find(p=>p.chapters.includes(c)).title):"Chapitre"}</span><${big?"h2":"b"} class="d t">${esc(c.title)}</${big?"h2":"b"}><span class="mono k">${k} mesures</span><span class="d num">${pad(c.n)}</span></${t}>`}
-function home(){app.innerHTML=`<div class="hero"><h1 class="d">Toutes les mesures, <span class="g">en un mot.</span></h1><p class="mono">${esc(D.meta.label)} · ${D.meta.count} mesures</p></div>`+D.parts.map((p,i)=>`<div class="ph"><span class="d pn">${pad(i+1)}</span><span class="mono">${esc(p.title)}</span></div><div class="grid">${p.chapters.map(c=>cover(c)).join("")}</div>`).join("")+foot();scrollTo(0,0)}
+const PLANS=[
+{t:"Comment nous allons refonder l’enseignement supérieur, la recherche et la formation continue",u:"https://melenchon2027.fr/programme/plans-thematiques/esr/",i:"esr",c:"Plan thématique"},
+{t:"Comment nous allons garantir l’égalité pour des ruralités où il fait bon vivre",u:"https://melenchon2027.fr/programme/plans-thematiques/ruralite/",i:"ruralite",c:"Plan thématique"},
+{t:"BTP et logement, plan d’investissement productif",u:"https://melenchon2027.fr/programme/plans-investissement/btp-logement/",i:"btp-logement",c:"Plan d’investissement"},
+{t:"Automobile, plan d’investissement productif",u:"https://melenchon2027.fr/programme/plans-investissement/automobile/",i:"automobile",c:"Plan d’investissement"},
+{t:"Pour un pôle public bancaire",u:"https://melenchon2027.fr/wp-content/uploads/2026/10/DP-POLE-PUBLIC-BANCAIRE_ST.pdf",i:"pole-public-bancaire",c:"Document · PDF"},
+{t:"Comment nous allons remettre de l’ordre dans les comptes publics",u:"https://melenchon2027.fr/wp-content/uploads/2026/10/Comment-nous-allons-remettre-de-l-ordre-dans-les-comptes-publics.pdf",i:"comptes-publics",c:"Document · PDF"}];
+function plans(){return`<details class="pl"><summary><span><span class="d pl-h">Pour aller plus loin</span><span class="mono pl-n">${PLANS.length} documents officiels</span></span><span class="pl-t" aria-hidden="true"></span></summary><div class="pl-b"><p>Documents officiels complémentaires à <i>L’Avenir en commun</i>.</p><div class="grid">${PLANS.map(p=>`<a class="pl-a" href="${p.u}" target="_blank" rel="noopener"><img src="img/plans/${p.i}.jpg" alt="${esc(p.t)}" width="600" height="851" loading="lazy"><span class="mono pl-c">${p.c} ↗</span></a>`).join("")}</div></div></details>`}
+function home(){app.innerHTML=`<div class="hero"><h1 class="d">Toutes les mesures, <span class="g">en un mot.</span></h1><p class="mono">${esc(D.meta.label)} · ${D.meta.count} mesures</p></div>`+D.parts.map((p,i)=>`<div class="ph"><span class="d pn">${pad(i+1)}</span><span class="mono">${esc(p.title)}</span></div><div class="grid">${p.chapters.map(c=>cover(c)).join("")}</div>`).join("")+plans()+foot();scrollTo(0,0)}
 function foot(){const m=D.meta.missing.length;return`<footer><a href="https://lafranceinsoumise.fr" target="_blank" rel="noopener"><img class="foot-logo" src="img/logo-lfi.png" alt="La France insoumise" width="120" height="40"></a>Texte : ${D.meta.label}.<br><b>Outil non officiel de consultation.</b>${m?`<br>${m} section(s) pas encore importée(s).`:""}<br>Prochaine mise à jour: le 6 novembre 2026 (édition 2027).<br><a href="https://lafranceinsoumise.fr" target="_blank" rel="noopener">lafranceinsoumise.fr</a> · <a href="https://melenchon2027.fr" target="_blank" rel="noopener">melenchon2027.fr</a></footer>`}
 function chapter(n,sn){const c=D.parts.flatMap(p=>p.chapters).find(c=>c.n==n);if(!c)return home();
 app.innerHTML=`<a class="back mono" href="#/">← Tous les thèmes</a>${cover(c,1)}<div style="${vars(c.n)}">`+c.sections.map(s=>`<details class="sec" id="s${s.n}"${s.n==sn?" open":""}><summary><span class="sn">${pad(s.n)}</span><span>${esc(s.title)}</span><i class="cnt">${s.missing?"—":s.items.length}</i></summary><div class="body">${s.missing?`<div class="miss">Section pas encore importée (page absente de l'archive).<br><a class="src" href="${url(c.n,s.n)}" target="_blank" rel="noopener">Voir la source ↗</a></div>`:`${s.intro?`<p class="intro">${esc(s.intro)}</p>`:""}<ul class="ms">${s.items.map(m=>mesure(m,c,s)).join("")}</ul><a class="src" href="${url(c.n,s.n)}" target="_blank" rel="noopener">Source officielle ↗</a>`}</div></details>`).join("")+`</div>`+foot();
