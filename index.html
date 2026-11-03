@@ -793,6 +793,120 @@ footer{
   font:700 13px/1.5 "Public Sans",system-ui,sans-serif
 }
 
+/* Pop-up de lancement */
+
+.pop{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:max(16px,env(safe-area-inset-top,0px)) 16px max(16px,env(safe-area-inset-bottom,0px));
+  background:rgba(33,35,32,.64);
+  -webkit-backdrop-filter:blur(4px);
+  backdrop-filter:blur(4px);
+  opacity:0;
+  transition:opacity .22s ease
+}
+
+.pop[hidden]{display:none}
+
+.pop.on{opacity:1}
+
+.pop.maint{background:var(--violet)}
+
+.pop-c{
+  position:relative;
+  width:100%;
+  max-width:400px;
+  max-height:100%;
+  overflow:auto;
+  background:var(--bg);
+  border-top:6px solid var(--violet);
+  border-radius:4px;
+  box-shadow:0 18px 50px rgba(0,0,0,.35);
+  transform:translateY(16px) scale(.97);
+  transition:transform .28s cubic-bezier(.2,.8,.2,1)
+}
+
+.pop.on .pop-c{transform:none}
+
+.pop:not(.on) .pop-c{transition-duration:.18s}
+
+.pop.maint .pop-c{border-top-color:var(--red)}
+
+.pop-i{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:44vh;
+  max-height:44dvh;
+  object-fit:contain;
+  background:#FAFAFA
+}
+
+.pop-b{padding:18px 20px 22px}
+
+.pop-t{
+  margin:0 0 10px;
+  color:var(--violet);
+  font-size:clamp(22px,6.4vw,28px);
+  line-height:1.05
+}
+
+.pop-p{
+  margin:0;
+  font:600 16px/1.5 "Public Sans",system-ui,sans-serif
+}
+
+.pop-p a{
+  color:var(--red);
+  font-weight:900;
+  text-decoration:underline;
+  text-underline-offset:3px
+}
+
+.pop-x{
+  position:absolute;
+  top:14px;
+  right:18px;
+  z-index:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:44px;
+  height:44px;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:var(--violet);
+  box-shadow:5px 5px 0 var(--red);
+  color:#fff;
+  cursor:pointer;
+  outline:0;
+  -webkit-tap-highlight-color:transparent
+}
+
+.pop-x svg{
+  width:20px;
+  height:20px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:3.2;
+  stroke-linecap:round
+}
+
+.pop.maint .pop-x{display:none}
+
+body.maint header,
+body.maint main{display:none}
+
+@media (prefers-reduced-motion:reduce){
+  .pop,
+  .pop-c{transition:none}
+}
+
 </style>
 </head>
 <body>
@@ -802,6 +916,70 @@ footer{
 </header>
 <main id="app"><p class="none">Chargement…</p></main>
 <div id="toast"></div>
+<div id="pop" class="pop" role="dialog" aria-modal="true" aria-labelledby="pop-t" hidden>
+  <div class="pop-c">
+    <button type="button" class="pop-x" aria-label="Fermer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+    <img class="pop-i" src="img/programme-livre.jpg" alt="Couverture de L’Avenir en commun, le programme de la Nouvelle France, 4,90 €" width="800" height="1000">
+    <div class="pop-b">
+      <h2 class="d pop-t" id="pop-t">Le Programme de la Nouvelle France</h2>
+      <p class="pop-p" id="pop-p"></p>
+    </div>
+  </div>
+</div>
+<script>
+/* Pop-up de lancement. Heures de Paris (hiver, UTC+1) exprimées en UTC.
+   off:true -> supprime la pop-up une fois l'import terminé. */
+(()=>{
+const POP={
+  off:false,
+  arrive:Date.UTC(2026,10,6,7,0),   /* ven. 6 nov. 08:00 : « Le programme est là ! » */
+  jour:Date.UTC(2026,10,6,23,0),    /* sam. 7 nov. 00:00 : « aujourd’hui » au Bourget */
+  maint:Date.UTC(2026,10,7,23,0)    /* dim. 8 nov. 00:00 : maintenance, site verrouillé */
+};
+if(POP.off)return;
+const LK="https://melenchon2027.fr/programme/commander",
+a=t=>`<a href="${LK}" target="_blank" rel="noopener">${t}</a>`,
+ici=`Le programme est là ! RDV en librairie et commandez-le dès maintenant : ${a("commander")}.<br><br>`,
+TX={
+avant:`Le programme arrive ! RDV en librairie dès sa sortie, ce vendredi 6 novembre et précommandez-le dès maintenant ici : ${a("précommander")}`,
+apres:ici+"RDV demain, samedi 7 novembre au Bourget pour le Grand Meeting de présentation",
+jour:ici+"RDV aujourd’hui au Bourget pour le Grand Meeting de présentation",
+maint:`Maintenance en cours : nous ajoutons le nouveau programme à l’appli. Elle revient très vite !<br><br>Le livre est disponible en librairie, ou ici : ${a("commander")}.`
+};
+const now=Date.now();
+let s=now<POP.arrive?"avant":now<POP.jour?"apres":now<POP.maint?"jour":"maint";
+const f=(location.search.match(/[?&]popup=(avant|apres|jour|maint)\b/)||[])[1];
+if(f&&s!=="maint")s=f;
+const el=document.getElementById("pop"),
+x=el.querySelector(".pop-x"),
+lock=[...document.querySelectorAll("header,main,#toast")],
+last=document.activeElement,
+fixe=s==="maint";
+let closing=false;
+document.getElementById("pop-p").innerHTML=TX[s];
+if(fixe){el.classList.add("maint");document.body.classList.add("maint")}
+lock.forEach(n=>n.inert=true);
+document.body.style.overflow="hidden";
+function close(){
+  if(fixe||closing)return;
+  closing=true;
+  el.classList.remove("on");
+  setTimeout(()=>{
+    el.hidden=true;
+    lock.forEach(n=>n.inert=false);
+    document.body.style.overflow="";
+    if(last&&last.focus)last.focus()
+  },230)
+}
+x.addEventListener("click",close);
+el.addEventListener("click",e=>{if(e.target===el)close()});
+addEventListener("keydown",e=>{if(e.key==="Escape")close()});
+el.hidden=false;
+void el.offsetWidth;
+el.classList.add("on");
+if(!fixe)x.focus()
+})();
+</script>
 <script>
 const PAL={1:["#E8672A","#3B2A86"],2:["#F29A00","#4A2C8C"],3:["#E23B5B","#3B2A86"],4:["#D6285F","#2F2A86"],5:["#2E7DE0","#5B2A8F"],6:["#1FAE7A","#3B2A86"],7:["#F26B3A","#7A2A86"],8:["#C23BD6","#2A2A86"],9:["#F2603A","#263A7A"],10:["#00A6A6","#3B2A86"],11:["#E83E8C","#F29D2E"],12:["#5CBF3A","#1E5A6B"],13:["#F28A00","#4A2C8C"],14:["#19B5E8","#2A2A86"],15:["#F04A4A","#7A1F6B"],16:["#7E57E2","#1F2A6B"],17:["#2F6BFF","#14125A"],18:["#FF5E8A","#1B1654"]};
 const MOTIF={1:'<path d="M36 12h28v36H36z"/><path d="M14 46h72v42H14z"/><path d="M32 60h36" fill="none"/>',2:'<path d="M8 36 50 12l42 24z"/><path d="M18 42h14v38H18zM43 42h14v38H43zM68 42h14v38H68z"/><path d="M8 84h84v8H8z"/>',3:'<path d="M6 90V48h20v42zM30 90V24h22v66zM56 90V8h18v82zM78 90V40h16v50z"/>',4:'<path d="M22 92V10h8v82z"/><path d="M30 12c14-8 24 8 40 0 8-4 14-4 20 0v36c-6-4-12-4-20 0-16 8-26-8-40 0z"/>',5:'<path d="M50 24C38 14 22 14 8 20v62c14-6 30-6 42 4zM50 24c12-10 28-10 42-4v62c-14-6-30-6-42 4z"/>',6:'<circle cx="46" cy="56" r="38"/><path d="M58 44V6a38 38 0 0 1 36 34z"/>',7:'<path d="M50 90C16 64 6 44 14 28c8-14 28-14 36 4 8-18 28-18 36-4 8 16-2 36-36 62z"/>',8:()=>[0,45,90,135,180,225,270,315].map(r=>`<rect x="43" y="5" width="14" height="20" transform="rotate(${r} 50 50)"/>`).join("")+'<circle cx="50" cy="50" r="30"/><circle cx="50" cy="50" r="11" style="fill:#FFFCF4"/>',9:'<path d="M8 90V44l22 14V44l22 14V44l22 14V16h14v74z"/>',10:'<circle cx="32" cy="28" r="14"/><path d="M6 88c0-24 12-34 26-34s26 10 26 34z"/><circle cx="70" cy="34" r="12"/><path d="M50 88c0-20 8-28 20-28s24 8 24 28z"/>',11:'<circle cx="50" cy="50" r="40"/><path d="M10 50c20-8 60-8 80 0M50 10c-14 24-14 56 0 80M50 10c14 24 14 56 0 80" fill="none"/>',12:'<path d="M12 88C8 40 40 10 90 10c2 48-26 80-70 76z"/><path d="M12 88 56 44" fill="none"/>',13:'<path d="M58 4 18 56h26l-8 40 46-56H56z"/>',14:'<path d="M50 6C32 32 16 48 16 66a34 34 0 0 0 68 0C84 48 68 32 50 6z"/>',15:'<path d="M36 8h28v28h28v28H64v28H36V64H8V36h28z"/>',16:'<circle cx="50" cy="50" r="40"/><path d="M50 10v80M50 50 22 78M50 50l28 28" fill="none"/>',17:()=>Array.from({length:12},(_,k)=>`<circle cx="${(50+36*Math.sin(k*Math.PI/6)).toFixed(1)}" cy="${(50-36*Math.cos(k*Math.PI/6)).toFixed(1)}" r="6.5"/>`).join(""),18:'<circle cx="50" cy="50" r="26"/><ellipse cx="50" cy="52" rx="46" ry="12" transform="rotate(-20 50 52)" fill="none" stroke-width="6"/>'};
