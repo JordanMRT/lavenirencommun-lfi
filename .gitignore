@@ -4,3 +4,8 @@ pages_manquantes/
 __pycache__/
 *.bak
 rapport*.md
+
+# Sources du livre : ne jamais publier avant autorisation
+*.pdf
+sources/
+programme-2027*
