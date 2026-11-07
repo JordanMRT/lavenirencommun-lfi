@@ -1,9 +1,20 @@
-Les textes, logos et éléments graphiques du parti La France Insoumise présents dans ce projet
-ne sont pas la propriété de l'auteur du code et ne sont couverts par
-aucune licence accordée ici. Leurs droits appartiennent à leurs
-détenteurs respectifs.
+Texte du programme
+Les textes de « L'Avenir en commun » (édition 2027) repris dans data/programme.json
+proviennent de https://melenchon2027.fr/programme/livre/ (relevé du 7 novembre 2026).
+Ils sont © La France insoumise et, d'après les mentions légales du site
+(https://melenchon2027.fr/mentions-legales/), placés sous licence Creative Commons
+Attribution - Pas d'Utilisation Commerciale - Partage dans les Mêmes Conditions 4.0
+International (CC BY-NC-SA 4.0 : https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr).
+Ce projet les réorganise (classement par thème, recherche) sans en changer le sens.
+Le fichier data/programme.json est donc diffusé sous cette même licence, aux mêmes
+conditions : attribution, usage non commercial, partage dans les mêmes conditions.
+Ce projet est un outil non officiel : il n'est ni approuvé ni soutenu par La France insoumise.
 
-Le fichier LICENSE concerne le code source écrit par l'auteur ainsi que
-les encarts « Comprendre cette mesure » (data/exemples.json), rédigés par
-l'auteur. Les mesures du programme qu'ils commentent restent la propriété
-de leurs détenteurs.
+Logos et éléments graphiques
+Les logos et éléments graphiques de La France Insoumise (img/logo-lfi.png notamment)
+ne sont pas couverts par cette licence et restent la propriété de leurs détenteurs.
+
+Code et encarts
+Le fichier LICENSE concerne le code source écrit par l'auteur ainsi que les encarts
+« Comprendre cette mesure » (data/exemples.json), rédigés par l'auteur. Les mesures
+du programme qu'ils commentent restent sous la licence indiquée ci-dessus.
