@@ -5,7 +5,7 @@ Site statique (HTML/CSS/JS, sans build) : recherche instantanée + navigation pa
 ## Licence et droits
 
 - **Code et encarts « Comprendre cette mesure »** : © 2026 JordanMRT, tous droits réservés. Aucune copie, modification ni republication sans accord écrit préalable (voir [LICENSE](LICENSE)). Le fork sur GitHub reste permis par les conditions de la plateforme.
-- **Textes, logos et éléments graphiques du parti** : ils n'appartiennent pas à l'auteur du code et ne sont couverts par aucune licence ici (voir [NOTICE](NOTICE)).
+- **Textes, logos et éléments graphiques du parti** : ils n'appartiennent pas à l'auteur du code et sont couverts par la licence CC BY-NC-SA (voir [NOTICE](NOTICE)).
 
 ## Déploiement (GitHub Pages, usage de l'auteur)
 
